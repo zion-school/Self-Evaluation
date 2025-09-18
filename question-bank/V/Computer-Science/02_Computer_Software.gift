@@ -1,0 +1,268 @@
+// V std, Computer Science, Chapter 2 : Computer Software
+// Zion Nursery & Primary School, Kovaipudur
+// Author : Jabez Winston
+// Date : August 27, 2025
+
+$CATEGORY: $course$/Chapter-2
+
+// === Choose the correct answer ===
+
+// [tag:Choose]
+::What is the primary function of system software?::
+What is the primary function of system software? {
+~Perform user tasks (e.g., editing photos)
+=Manage hardware and support apps
+~Create web pages
+~Design user interfaces
+}
+
+// [tag:Choose]
+::Which of the following is an example of firmware?::
+Which of the following is an example of firmware? {
+~Google Chrome
+=BIOS/UEFI on a computer
+~Microsoft Word
+~Android
+}
+
+// [tag:Choose]
+::Which operating system is free and open-source?::
+Which operating system is free and open-source? {
+~Windows
+~macOS
+=Linux
+~iOS
+}
+
+// [tag:Choose]
+::What type of software is MS Paint ?::
+What type of software is MS Paint? {
+~System software
+=Application software
+~Firmware
+~Operating system
+}
+
+// [tag:Choose]
+::Which operating system is primarily used on smartphones and tablets developed by Google?::
+Which operating system is primarily used on smartphones and tablets developed by Google? {
+~iOS
+=Android
+~Windows
+~macOS
+}
+
+// [tag:Choose]
+::What does a Graphical User Interface (GUI) primarily use to interact with users?::
+What does a Graphical User Interface (GUI) primarily use to interact with users? {
+~Text commands
+=Icons & buttons
+~Hardware controls
+~Voice commands
+}
+
+// [tag:Choose]
+::Which of the following is a Command-Line Interface (CLI) tool in Windows?::
+Which of the following is a Command-Line Interface (CLI) tool in Windows? {
+~File Explorer
+=Command Prompt
+~MS Paint
+~Google Chrome
+}
+
+// [tag:Choose]
+::Which programming language is commonly used for web development?::
+Which programming language is commonly used for web development? {
+~Assembly
+=JavaScript with HTML
+~C
+~Python
+}
+
+// [tag:Choose]
+::Which software is used to navigate and manage files in Windows?::
+Which software is used to navigate and manage files in Windows? {
+~WordPad
+=File Explorer
+~Command Prompt
+~Linux Terminal
+}
+
+// [tag:Choose]
+::Which operating system was widely used in the 1980s and 1990s and relied on text-based commands?::
+Which operating system was widely used in the 1980s and 1990s and relied on text-based commands? {
+=DOS
+~Windows
+~macOS
+~Android
+}
+
+// [tag:Choose]
+::Which language is known for being beginner-friendly and easy to learn?::
+Which language is known for being beginner-friendly and easy to learn? {
+~Assembly
+~C++
+=Python
+~C
+}
+
+// [tag:Choose]
+::What type of software is Google Chrome ?::
+What type of software is Google Chrome? {
+~Operating system
+=Application software
+~Firmware
+~System software
+}
+
+// [tag:Choose]
+::Which of the following is a mobile operating system developed by Apple?::
+Which of the following is a mobile operating system developed by Apple? {
+~Android
+=iOS
+~Linux
+~Windows
+}
+
+// [tag:Choose]
+::Which programming language is used for high-performance applications like video games?::
+Which programming language is used for high-performance applications like video games? {
+~HTML
+=C++
+~JavaScript
+~Python
+}
+
+// [tag:Choose]
+::Who is the famous free software movement activist, founder of the Free Software Foundation (FSF), and create of the GNU project?::
+Who is the famous free software movement activist, founder of the Free Software Foundation (FSF), and create of the GNU project? {
+~Steve Jobs
+=Richard Stallman
+~Bill Gates
+~Mark Zuckerberg
+}
+
+// === Fill in the blanks ===
+
+// [tag:Fill up]
+::Windows is an OS developed by _________ ::
+Windows is an OS developed by {=Microsoft}
+
+// [tag:Fill up]
+::__________ is an operating system developed by Google for smartphones.::
+{=Android} is an operating system developed by Google for smartphones.
+
+// [tag:Fill up]
+::A computer language which is easy to learn and use is __________::
+A computer language which is easy to learn and use is {=Python}
+
+// [tag:Fill up]
+::The initial creator of Linux OS is __________ ::
+The initial creator of Linux OS is {=Linus Torvalds}
+
+// [tag:Fill up]
+::GNU project of Free Software Foundation started (FSF) by __________ helped Linux become a complete OS.::
+GNU project of Free Software Foundation started (FSF) by {=Richard Stallman} helped Linux become a complete OS.
+
+// [tag:Fill up]
+::OS which runs on computers made by Apple is __________::
+OS which runs on computers made by Apple is {=macOS}
+
+// [tag:Fill up]
+::Alternate name for directory is __________::
+Alternate name for directory is {=folder}.
+
+// [tag:Fill up]
+::__________ language is a low-level language that interacts closely with hardware.::
+{=Assembly} language is a low-level language that interacts closely with hardware.
+
+// [tag:Fill up]
+::The command used to create folders is __________::
+The command used to create folders is {=mkdir}.
+
+// [tag:Fill up]
+::An example of Linux distribution is __________::
+An example of Linux distribution is {=Ubuntu =Mint}.
+
+// === Matching ===
+
+// [tag:Match]
+::Match - History of OSs::
+{
+= Windows 1.0 -> 1985
+= Android 1.0 -> 2008
+= Apple iOS 1 -> 2007
+= Linux 0.01 -> 1991
+= Windows 10 -> 2015
+= Windows 11 -> 2021
+= Apple System Software 1 -> 1984
+}
+
+// [tag:Match]
+::Match - Types of Software::
+{
+= Windows, Linux, macOS -> Desktop OS
+= BIOS/UEFI -> Firmware
+= MS-Paint, Google Chrome -> Application Software
+= Python, C/C++ compiler, VSCode -> Software Development Tools
+= Android, iOS -> Mobile OS
+}
+
+// === Expand the following ===
+// [tag: Abbreviation] [tag: Fill up]
+::OS::
+OS {=Operating System}
+
+// [tag: Abbreviation] [tag: Fill up]
+::DOS::
+DOS {=Disk Operating System}
+
+// [tag: Abbreviation] [tag: Fill up]
+::CLI::
+CLI {=Command Line Interface}
+
+// [tag: Abbreviation] [tag: Fill up]
+::GUI::
+GUI {=Graphical User Interface}
+
+// [tag: Abbreviation] [tag: Fill up]
+::BIOS::
+BIOS {=Basic Input Output System}
+
+// [tag: Abbreviation] [tag: Fill up]
+::UEFI::
+UEFI {=Universal Extensible Firmware Interface}
+
+// [tag: Abbreviation] [tag: Fill up]
+::FSF::
+FSF {=Free Software Foundation}
+
+// === True or False ===
+
+// [tag:True or False]
+::Android is based on Linux OS::
+Android is based on Linux OS {TRUE}
+
+// [tag: True or False]
+::Example for an operating system is Google Chrome::
+Example for an operating system is Google Chrome {FALSE}
+
+// [tag: True or False]
+::Example for an application software is LibreOffice Writer::
+Example for an application software is LibreOffice Writer {TRUE}
+
+// [tag: True or False]
+::HTML with Javascript is used for creating interactive websites.::
+HTML with Javascript is used for creating interactive websites. {TRUE}
+
+// [tag: True or False]
+::Windows is a free and open-source operating system.::
+Windows is a free and open-source operating system. {FALSE}
+
+// [tag: True or False]
+::The 1st iPhone was released in 2008 & 1st Android was released in 2007.::
+The 1st iPhone was released in 2008 & 1st Android was released in 2007. {FALSE}
+
+// [tag: True or False]
+::Ubuntu Linux & Linux Mint are free operating systems.::
+Ubuntu Linux & Linux Mint are free operating systems. {TRUE}

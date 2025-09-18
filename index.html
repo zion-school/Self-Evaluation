@@ -1,0 +1,1017 @@
+<!---
+
+Copyright (c) 2025 Zion Nursery & Primary School, Kovaipudur
+
+Moodle GIFT => JSON => Quiz in HTML
+
+Author : Jabez Winston C
+Date   : 17 September 2025
+
+--->
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <script src="gift2json.js"></script>
+  <title>Zion School - Self Evaluation</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="wrap">
+      <h1>Zion School - Self Evaluation</h1>
+      <h2 id="chapter_name"></h2>
+    <header>
+      <div class="meta">
+        <button id="downloadBtn">📁 Export Answers</button>
+        <label style="display:inline-flex;align-items:center;gap:8px"><input id="autoSave" type="checkbox" checked />Auto-save</label>
+        <label style="display:inline-flex;align-items:center;gap:8px"><input id="learnMode" type="checkbox" />Learn Mode</label>
+      </div>
+    </header>
+
+    <div class="card" id="mainCard">
+      <div id="questionArea">
+        <!-- question rendered here -->
+      </div>
+
+      <div class="nav" id="questionNav">
+        <button id="prevBtn">◀ Previous</button>
+        <button id="checkBtn" class="check-btn" style="display: none;">✓ Check</button>
+        <button id="nextBtn">Next ▶</button>
+      </div>
+
+      <div style="width: 80%; margin: 2rem auto; text-align: center;">
+        <div class="progress" title="Progress"><i id="progressBar"></i></div>
+      </div>
+
+      <div class="footer" id="questionFooter">
+        <div class="small">Status: <span id="status">Not started</span></div>
+        <div class="controls">
+          <button id="homeBtn" onclick="homeBtnHandler()">🏠 Home</button>
+        </div>
+        <div class="controls">
+          <button id="resetBtn">🔄 Reset</button>
+          <button id="gradeBtn" class="primary">🎯 Grade & Finish</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Make sure examJSON is defined
+    if (typeof window.examJSON === 'undefined') {
+      window.examJSON = [];
+    }
+
+    // Current test filename for unique storage key
+    let currentTestFilename = null;
+
+    // Generate unique storage key based on test filename
+    function getStorageKey() {
+      return currentTestFilename
+        ? `json_exam_answers_${currentTestFilename.replace(/[^a-z0-9]/gi, '_').toLowerCase()}`
+        : 'json_exam_answers_v1';
+    }
+
+    // localStorage key - will be updated dynamically
+    let STORAGE_KEY = getStorageKey();
+
+    let questions = []; // flattened usable questions
+    let pageIndex = 0;
+    let learnMode = false;
+
+    // Speech synthesis functions
+    function stripHtml(html) {
+      const tmp = document.createElement('div');
+      tmp.innerHTML = html;
+      return tmp.textContent || tmp.innerText || '';
+    }
+
+    function speakText(text) {
+      if ('speechSynthesis' in window) {
+        // Strip HTML tags
+        var plainText = stripHtml(text);
+
+        plainText = plainText.replace(/_{2,}/g, ' dash '); // Indian way
+
+        const utterance = new SpeechSynthesisUtterance(plainText);
+        utterance.lang = navigator.language || 'en-IN';
+        utterance.rate = 0.75;  // 👈 slow reading speed
+        utterance.pitch = 1;
+        utterance.volume = 1.2;
+        speechSynthesis.speak(utterance);
+      } else {
+        console.log('Speech synthesis not supported');
+      }
+    }
+
+    function createSpeakerButton(text) {
+      const button = document.createElement('button');
+      button.className = 'speaker-btn';
+      button.textContent = '🔊';
+      button.title = 'Listen';
+      button.addEventListener('click', () => speakText(text));
+      return button;
+    }
+
+    // Fetch list of gift from question-bank/list.txt (File in each line)
+    async function fetchTestList() {
+      try {
+        const response = await fetch('question-bank/list.txt');
+        if (!response.ok) throw new Error('Failed to fetch test list');
+        const text = await response.text();
+        return text.split('\n').filter(line => line.trim() !== '');
+      } catch (error) {
+        console.error('Error fetching test list:', error);
+        return [];
+      }
+    }
+
+    // Load and parse a GIFT file
+    async function loadGiftFile(filename) {
+      try {
+        const response = await fetch(`question-bank/${filename}`);
+        if (!response.ok) throw new Error(`Failed to fetch ${filename}`);
+        const giftText = await response.text();
+        // Assuming parseGift is defined in gift2json.js
+        return parseGift(giftText);
+      } catch (error) {
+        console.error('Error loading GIFT file:', error);
+        alert(`Error loading test: ${error.message}`);
+        return null;
+      }
+    }
+
+    // --- helpers to normalise input JSON and produce usable question objects ---
+    function prepareQuestions(raw) {
+      // raw is array of question-like objects; skip pure category entries
+      const out = [];
+      for (const q of raw) {
+        if (!q.qtype) continue;
+        const t = q.qtype.toLowerCase();
+        if (t === 'category') continue; // skip
+        const obj = { raw: q, type: t, title: q.name || q.questiontext || '(no text)' };
+        // normalise answers
+        if (t === 'multichoice') {
+          obj.options = (q.answers || []).map((a, i) => ({ text: a.answer || a.text || "", correct: !!(a.fraction && Number(a.fraction) > 0), index: i }));
+          obj.single = !!q.single;
+        } else if (t === 'shortanswer') {
+          obj.answers = (q.answers || []).map(a => (a.answer || a.text || '').toString());
+        } else if (t === 'match') {
+          obj.sub = (q.subquestions || []).map(s => ({ left: s.questiontext, right: s.answertext }));
+        } else if (t === 'truefalse') {
+          // correctanswer: 1=true,0=false
+          obj.correct = (typeof q.correctanswer !== 'undefined') ? (q.correctanswer == 1) : null;
+        }
+        out.push(obj);
+      }
+      return out;
+    }
+
+    // Build a tree structure from the file paths
+    function buildTree(paths) {
+      const root = { name: 'root', children: [], path: '', isLeaf: false };
+
+      paths.forEach(path => {
+        const parts = path.split('/');
+        let currentNode = root;
+        let currentPath = '';
+
+        parts.forEach((part, index) => {
+          currentPath = currentPath ? `${currentPath}/${part}` : part;
+          const isLeaf = index === parts.length - 1;
+
+          let childNode = currentNode.children.find(child => child.name === part);
+
+          if (!childNode) {
+            childNode = {
+              name: part,
+              children: [],
+              path: currentPath,
+              isLeaf: isLeaf
+            };
+            currentNode.children.push(childNode);
+          }
+
+          currentNode = childNode;
+        });
+      });
+
+      return root;
+    }
+
+    function convertToFriendlyPath(path) {
+        let parts = path.split('/');
+        let lastIndex = parts.length - 1;
+
+        let formattedParts = parts.map((part, index) => {
+          if (index === lastIndex) {
+            // Handle leaf node: number prefix and underscores
+            let match = part.match(/^(\d+)_+(.*)/);
+            if (match) {
+              let number = parseInt(match[1], 10); // Remove leading zeros
+              let title = match[2].replace(/_/g, ' ');
+              return `${number}. ${title}`;
+            } else {
+              // No number prefix, just replace underscores
+              return part.replace(/_/g, ' ');
+            }
+          } else {
+            // Just replace underscores with spaces for intermediate parts
+            return part.replace(/_/g, ' ');
+          }
+        });
+
+        let formattedPath = formattedParts.join(' ▶ ');
+
+        return formattedPath;
+    }
+
+    // Render the tree structure
+    function renderTree(node, container) {
+      const nodeElement = document.createElement('div');
+      nodeElement.className = `tree-node ${node.isLeaf ? 'leaf' : 'collapsed'}`;
+
+      const headerElement = document.createElement('div');
+      headerElement.className = 'tree-node-header';
+
+      const expanderElement = document.createElement('span');
+      expanderElement.className = 'tree-expander';
+
+      const iconElement = document.createElement('span');
+      iconElement.className = 'tree-node-icon';
+      iconElement.textContent = node.isLeaf ? '📄' : '📁';
+
+      headerElement.appendChild(expanderElement);
+      headerElement.appendChild(iconElement);
+
+      if (node.isLeaf) {
+        const linkElement = document.createElement('a');
+        linkElement.className = 'tree-node-link';
+        linkElement.textContent = node.name.replace(/\.gift$/i, '');
+        linkElement.href = '#';
+        linkElement.dataset.test = node.path;
+
+        linkElement.addEventListener('click', async (e) => {
+          e.preventDefault();
+          const testFile = e.target.dataset.test;
+
+          // Show loading indicator
+          const qa = document.getElementById('questionArea');
+          qa.innerHTML = '<div class="small">🔄 Loading test...</div>';
+
+          const examData = await loadGiftFile(testFile);
+          if (examData) {
+            // Set current test filename for unique storage key
+            currentTestFilename = testFile.replace(/\.gift$/i, '');
+            STORAGE_KEY = getStorageKey();
+
+            // Set testFile in <h2>
+            document.getElementById('chapter_name').textContent = convertToFriendlyPath(testFile.replace(/\.gift$/i, ''));
+
+            // Replace the global examJSON with the parsed data
+            window.examJSON = examData;
+            // Initialize the exam with the loaded data
+            questions = prepareQuestions(examData);
+
+            // load saved answers
+            const saved = loadAnswers();
+            if (saved && saved.pageIndex >= 0) pageIndex = saved.pageIndex;
+            renderQuestion(pageIndex);
+            updateProgress();
+          } else {
+            // If loading failed, show the test list again
+            init();
+          }
+        });
+
+        headerElement.appendChild(linkElement);
+      } else {
+        const nameElement = document.createElement('span');
+        nameElement.textContent = node.name;
+        headerElement.appendChild(nameElement);
+
+        headerElement.addEventListener('click', () => {
+          nodeElement.classList.toggle('collapsed');
+          nodeElement.classList.toggle('expanded');
+        });
+      }
+
+      nodeElement.appendChild(headerElement);
+
+      if (!node.isLeaf) {
+        const childrenElement = document.createElement('div');
+        childrenElement.className = 'tree-node-children';
+
+        node.children.forEach(child => {
+          renderTree(child, childrenElement);
+        });
+
+        nodeElement.appendChild(childrenElement);
+      }
+
+      container.appendChild(nodeElement);
+    }
+
+    function hideButtons(buttonList) {
+      buttonList.forEach(btn => {
+        document.getElementById(btn).style.display = 'none';
+      });
+    }
+
+    function showButtons(buttonList) {
+      buttonList.forEach(btn => {
+        document.getElementById(btn).style.display = '';
+      });
+    }
+
+    // load from config
+    async function init() {
+      // Check for speech synthesis support
+      if (!('speechSynthesis' in window)) {
+        document.body.classList.add('no-speech');
+      }
+
+      hideButtons(['homeBtn', 'resetBtn', 'gradeBtn', 'nextBtn', 'prevBtn']);
+
+      // First, try to fetch the list of tests
+      const testList = await fetchTestList();
+
+      if (testList.length === 0) {
+        document.getElementById('questionArea').innerHTML = '<div class="small">📋 No tests available. Make sure question-bank/list.txt exists and contains test filenames.</div>';
+        return;
+      }
+
+      // Check if we already have exam data (from a direct load or import)
+      if (window.examJSON && Array.isArray(window.examJSON) && window.examJSON.length > 0) {
+        // If we do, initialize the exam directly
+        questions = prepareQuestions(window.examJSON);
+
+        // load saved answers
+        const saved = loadAnswers();
+        if (saved && saved.pageIndex >= 0) pageIndex = saved.pageIndex;
+        renderQuestion(pageIndex);
+        updateProgress();
+        return;
+      }
+
+      // Build tree structure from test list
+      const tree = buildTree(testList);
+
+      // Show the test list as a tree
+      const qa = document.getElementById('questionArea');
+      qa.innerHTML = '<h2>📚 Available Tests</h2>';
+
+      const treeContainer = document.createElement('div');
+      treeContainer.className = 'tree-container';
+
+      // Render the tree (skip the root node)
+      tree.children.forEach(child => {
+        renderTree(child, treeContainer);
+      });
+
+      qa.appendChild(treeContainer);
+    }
+
+    // Save answers structure: {pageIndex, answers: {idx: answer}}
+    function saveAnswers(auto = false) {
+      if (!document.getElementById('autoSave').checked && auto) return;
+      const payload = { pageIndex, answers: collectAllAnswers() };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+      setStatus('💾 Saved');
+    }
+    function loadAnswers() {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return null;
+      try { return JSON.parse(raw); } catch (e) { return null }
+    }
+    function resetAnswers() {
+      if (confirm('Reset all saved answers?')) {
+        localStorage.removeItem(STORAGE_KEY);
+        // reload page state
+        pageIndex = 0;
+        renderQuestion(0);
+        updateProgress();
+        setStatus('🔄 Reset');
+      }
+    }
+
+    function setStatus(t) { document.getElementById('status').textContent = t; }
+
+    // Collect answers from DOM for current question
+    function readAnswerFor(index) {
+      const q = questions[index];
+      if (!q) return null;
+      const root = document.getElementById('questionArea');
+      if (q.type === 'multichoice') {
+        if (q.single) {
+          const radios = root.querySelectorAll('input[type=radio]');
+          for (const r of radios) { if (r.checked) return Number(r.dataset.optIndex); }
+          return null;
+        } else {
+          const checks = root.querySelectorAll('input[type=checkbox]');
+          const res = [];
+          for (const c of checks) if (c.checked) res.push(Number(c.dataset.optIndex));
+          return res;
+        }
+      } else if (q.type === 'shortanswer') {
+        const ip = root.querySelector('input[type=text]');
+        return ip ? ip.value : null;
+      } else if (q.type === 'match') {
+        const selects = root.querySelectorAll('select[data-subindex]');
+        const arr = [];
+        for (const s of selects) arr.push(s.value);
+        return arr;
+      } else if (q.type === 'truefalse') {
+        const radios = root.querySelectorAll('input[name="tf"]');
+        for (const r of radios) { if (r.checked) return r.value === 'true'; }
+        return null;
+      }
+      return null;
+    }
+
+    function collectAllAnswers() {
+      const existing = loadAnswers();
+      const out = (existing && existing.answers) ? existing.answers : {};
+      // update current page to ensure latest
+      for (let i = 0; i < questions.length; i++) {
+        const el = document.querySelector('[data-qindex="' + i + '"]');
+        if (el) { // question rendered
+          out[i] = readAnswerFor(i);
+        }
+      }
+      return out;
+    }
+
+    // Check if the current answer is correct and show feedback
+    function checkAnswerAndShowFeedback() {
+      const q = questions[pageIndex];
+      const userAnswer = readAnswerFor(pageIndex);
+      const feedbackContainer = document.getElementById('feedback');
+
+      if (!q || !feedbackContainer) return;
+
+      let isCorrect = false;
+      let correctAnswerText = '';
+
+      if (q.type === 'multichoice' && q.single) {
+        const correctOption = q.options.find(opt => opt.correct);
+        isCorrect = userAnswer !== null && userAnswer !== undefined && q.options[userAnswer]?.correct;
+        correctAnswerText = correctOption ? correctOption.text : 'No correct answer specified';
+      } else if (q.type === 'shortanswer' && q.answers && q.answers.length > 0) {
+        const correct = q.answers[0].toString().trim().toLowerCase();
+        const got = (userAnswer || '').toString().trim().toLowerCase();
+        isCorrect = got === correct;
+        correctAnswerText = q.answers[0];
+      } else if (q.type === 'truefalse') {
+        isCorrect = userAnswer === q.correct;
+        correctAnswerText = q.correct ? 'True' : 'False';
+      } else if (q.type === 'match' && q.sub) {
+        let allCorrect = true;
+        const correctMatches = [];
+
+        for (let i = 0; i < q.sub.length; i++) {
+          const isMatchCorrect = userAnswer && userAnswer[i] && userAnswer[i] === q.sub[i].right;
+          allCorrect = allCorrect && isMatchCorrect;
+          correctMatches.push(`${q.sub[i].left} → ${q.sub[i].right}`);
+        }
+
+        isCorrect = allCorrect;
+        correctAnswerText = correctMatches.join(', ');
+      }
+
+      // Show feedback
+      feedbackContainer.style.display = 'block';
+      feedbackContainer.className = 'feedback-container ' + (isCorrect ? 'feedback-correct' : 'feedback-incorrect');
+
+      // Create feedback elements
+      const feedbackDiv = document.createElement('div');
+      feedbackDiv.innerHTML = `
+        <div>
+          <span class="feedback-icon">${isCorrect ? '✓' : '✗'}</span>
+          <span>${isCorrect ? 'Correct!' : 'Incorrect'}</span>
+        </div>
+        <div class="feedback-answer">
+          Correct Answer: <span class="correct-answer-text">${correctAnswerText}</span>
+        </div>
+      `;
+
+      // Add speaker button for the correct answer
+      const correctAnswerSpan = feedbackDiv.querySelector('.correct-answer-text');
+      const speakerBtn = createSpeakerButton(correctAnswerText);
+      correctAnswerSpan.parentNode.insertBefore(speakerBtn, correctAnswerSpan.nextSibling);
+
+      feedbackContainer.appendChild(feedbackDiv);
+    }
+
+    // Render functions
+    function renderQuestion(i) {
+      // Show buttons
+      showButtons(['homeBtn', 'resetBtn', 'gradeBtn', 'nextBtn', 'prevBtn']);
+
+      const qa = document.getElementById('questionArea');
+      qa.innerHTML = '';
+      if (i < 0) i = 0; if (i >= questions.length) i = questions.length - 1;
+      pageIndex = i;
+      const q = questions[i];
+      if (!q) { qa.innerHTML = '<div class="small">No questions available.</div>'; return; }
+      const container = document.createElement('div');
+      container.dataset.qindex = i;
+      container.className = 'qblock';
+
+      // Create qnum with navigation input
+      const qnum = document.createElement('div'); qnum.className = 'qnum';
+
+      // "Question" text
+      const qnumText = document.createElement('span');
+      qnumText.textContent = 'Question ';
+      qnum.appendChild(qnumText);
+
+      // Input for direct navigation
+      const gotoInput = document.createElement('input');
+      gotoInput.type = 'number';
+      gotoInput.min = '1';
+      gotoInput.max = questions.length;
+      gotoInput.value = i + 1;
+      gotoInput.className = 'goto-input';
+      gotoInput.title = 'Enter question number and press Enter';
+      qnum.appendChild(gotoInput);
+
+      // " / " text
+      const slashText = document.createElement('span');
+      slashText.textContent = ' / ' + questions.length + ' ';
+      qnum.appendChild(slashText);
+
+      // Go button
+      const gotoBtn = document.createElement('button');
+      gotoBtn.textContent = 'Go';
+      gotoBtn.className = 'goto-btn';
+      gotoBtn.title = 'Go to question';
+      qnum.appendChild(gotoBtn);
+
+      // Add event listeners for navigation
+      const navigateToQuestion = () => {
+        const targetNum = parseInt(gotoInput.value);
+        if (!isNaN(targetNum) && targetNum >= 1 && targetNum <= questions.length) {
+          saveAnswers();
+          renderQuestion(targetNum - 1);
+        } else {
+          // Reset to current if invalid
+          gotoInput.value = i + 1;
+        }
+      };
+
+      gotoInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          navigateToQuestion();
+        }
+      });
+
+      gotoBtn.addEventListener('click', navigateToQuestion);
+
+      const qtext = document.createElement('div');
+      qtext.className = 'qtext';
+      
+      // Create a container for the question text
+      const questionContent = document.createElement('div');
+      qtext.innerHTML = escapeHtml(q.title) /* + (q.raw && q.raw.questiontext && q.raw.questiontext !== q.title ? ('<div class="small muted">' + escapeHtml(q.raw.questiontext) + '</div>') : '') */;
+      qtext.appendChild(questionContent);
+      
+      // Add speaker button for the question (except for match questions)
+      if (q.type !== 'match') {
+        const speakerBtn = createSpeakerButton(q.title);
+        qtext.appendChild(speakerBtn);
+      }
+
+      container.appendChild(qnum); container.appendChild(qtext);
+
+      const opts = document.createElement('div'); opts.className = 'opts';
+
+      // try to prefill from localStorage
+      const saved = loadAnswers();
+      const savedAnswers = (saved && saved.answers) ? saved.answers : {};
+      const pre = savedAnswers[i];
+
+      if (q.type === 'multichoice') {
+        // single -> radio, multiple -> checkbox
+        q.options.forEach((o, idx) => {
+          const lab = document.createElement('label'); lab.className = 'opt';
+          const inp = document.createElement('input');
+          inp.type = q.single ? 'radio' : 'checkbox';
+          inp.name = q.single ? 'opt' : 'mc' + i;
+          inp.dataset.optIndex = idx;
+          if (pre != null) {
+            if (q.single && Number(pre) === idx) inp.checked = true;
+            if (!q.single && Array.isArray(pre) && pre.includes(idx)) inp.checked = true;
+          }
+          lab.appendChild(inp);
+          const span = document.createElement('span'); 
+          span.style.marginLeft = '10px'; 
+          span.innerHTML = escapeHtml(o.text);
+          lab.appendChild(span);
+          
+          // Add speaker button for each option
+          const speakerBtn = createSpeakerButton(o.text);
+          lab.appendChild(speakerBtn);
+          
+          opts.appendChild(lab);
+        });
+      } else if (q.type === 'shortanswer') {
+        const ip = document.createElement('input'); 
+        ip.type = 'text'; 
+        ip.placeholder = 'Type your answer here'; 
+        ip.value = pre || '';
+        opts.appendChild(ip);
+      } else if (q.type === 'match') {
+        // left items with selects for right answer
+        const grid = document.createElement('div');
+        grid.className = 'match-grid';
+
+        // Create a shuffled copy of the right-side answers to randomize the dropdown options
+        const rightAnswers = q.sub.map(item => item.right);
+        const shuffledRightAnswers = [...rightAnswers].sort(() => Math.random() - 0.5);
+
+        // Build rows, each with a left item and a dropdown on the right
+        q.sub.forEach((item, index) => {
+          const row = document.createElement('div');
+          row.className = 'match-row';
+
+          const label = document.createElement('div');
+          label.className = 'match-label';
+          label.textContent = item.left;
+
+          const select = document.createElement('select');
+          select.className = 'match-select';
+          select.dataset.subindex = index;
+
+          // Add a default placeholder option
+          const defaultOption = document.createElement('option');
+          defaultOption.value = '';
+          defaultOption.textContent = '-- match --';
+          select.appendChild(defaultOption);
+
+          // Populate the dropdown with shuffled right answers
+          shuffledRightAnswers.forEach(answer => {
+            const option = document.createElement('option');
+            option.value = answer;
+            option.textContent = answer;
+            select.appendChild(option);
+          });
+
+          // Restore previous selection if it exists
+          if (pre && pre[index]) {
+            select.value = pre[index];
+          }
+
+          row.appendChild(label);
+          row.appendChild(select);
+          grid.appendChild(row);
+        });
+
+        opts.appendChild(grid);
+      } else if (q.type === 'truefalse') {        
+        const t = document.createElement('label'); t.className = 'opt';
+        const r1 = document.createElement('input'); r1.type = 'radio'; r1.name = 'tf'; r1.value = 'true'; if (pre === true) r1.checked = true; t.appendChild(r1); t.appendChild(document.createTextNode(' True'));
+        const f = document.createElement('label'); f.className = 'opt';
+        const r2 = document.createElement('input'); r2.type = 'radio'; r2.name = 'tf'; r2.value = 'false'; if (pre === false) r2.checked = true; f.appendChild(r2); f.appendChild(document.createTextNode(' False'));
+        opts.appendChild(t); opts.appendChild(f);
+      }
+
+      container.appendChild(opts);
+
+      // Add feedback container for learn mode
+      const feedbackContainer = document.createElement('div');
+      feedbackContainer.id = 'feedback';
+      feedbackContainer.className = 'feedback-container';
+      container.appendChild(feedbackContainer);
+
+      qa.appendChild(container);
+
+      // attach change listeners to auto-save
+      qa.querySelectorAll('input,select').forEach(el => {
+        if (el !== gotoInput) { // Skip the goto input
+          el.addEventListener('change', () => {
+            const savedObj = loadAnswers() || { answers: {} };
+            savedObj.answers = savedObj.answers || {};
+            savedObj.answers[i] = readAnswerFor(i);
+            savedObj.pageIndex = pageIndex;
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(savedObj));
+            updateProgress();
+            setStatus('💾 Saved');
+
+            // Hide feedback when answer changes in learn mode
+            if (learnMode) {
+              feedbackContainer.style.display = 'none';
+            }
+          });
+        }
+      });
+
+      // update navigation buttons
+      document.getElementById('prevBtn').disabled = (i === 0);
+      document.getElementById('nextBtn').disabled = (i === questions.length - 1);
+      document.getElementById('progressBar').style.width = Math.round(((i + 1) / questions.length) * 100) + '%';
+      // update status
+      setStatus('📝 Question ' + (i + 1));
+    }
+
+    function updateProgress() {
+      const saved = loadAnswers();
+      const answers = (saved && saved.answers) ? saved.answers : {};
+      let answered = 0;
+      for (let i = 0; i < questions.length; i++) if (typeof answers[i] !== 'undefined' && answers[i] !== null && answers[i] !== '' && !(Array.isArray(answers[i]) && answers[i].length === 0)) answered++;
+      document.getElementById('progressBar').style.width = Math.round((answered / questions.length) * 100) + '%';
+      document.getElementById('status').textContent = `📊 ${answered}/${questions.length} answered`;
+    }
+
+    // grading: compare saved answers to correct answers where possible
+    function gradeAll() {
+      const saved = loadAnswers();
+      const answers = (saved && saved.answers) ? saved.answers : {};
+      let correctCount = 0; let gradable = 0; const details = [];
+      for (let i = 0; i < questions.length; i++) {
+        const q = questions[i];
+        const ans = answers[i];
+        if (q.type === 'multichoice') {
+          // only support single choice grading reliably
+          if (q.single) {
+            gradable++;
+            const opt = q.options[ans];
+            if (opt && opt.correct) { correctCount++; details.push({ i, ok: true }); } else details.push({ i, ok: false });
+          }
+        } else if (q.type === 'shortanswer') {
+          // do case-insensitive exact match against first correct answer
+          if (q.answers && q.answers.length) {
+            gradable++;
+            const correct = q.answers[0].toString().trim().toLowerCase();
+            const got = (ans || '').toString().trim().toLowerCase();
+            if (got === correct) { correctCount++; details.push({ i, ok: true }); } else details.push({ i, ok: false });
+          }
+        } else if (q.type === 'truefalse') {
+          if (typeof q.correct === 'boolean') {
+            gradable++;
+            if (ans === q.correct) { correctCount++; details.push({ i, ok: true }); } else details.push({ i, ok: false });
+          }
+        } else if (q.type === 'match') {
+          // grade each match individually (1 point per correct match)
+          const subs = q.sub;
+          if (subs && subs.length) {
+            let matchCorrectCount = 0;
+            for (let k = 0; k < subs.length; k++) {
+              if (ans && ans[k] && ans[k] === subs[k].right) {
+                matchCorrectCount++;
+              }
+            }
+            correctCount += matchCorrectCount;
+            gradable += subs.length;
+            details.push({ i, type: 'match', correct: matchCorrectCount, total: subs.length });
+          }
+        }
+      }
+      return { correctCount, gradable, details, total: questions.length };
+    }
+
+    // Render graded results
+    function renderGradedResults(gradingResults) {
+      const qa = document.getElementById('questionArea');
+      qa.innerHTML = '';
+
+      // Hide navigation and footer for question view
+      document.getElementById('questionNav').style.display = 'none';
+      document.getElementById('questionFooter').style.display = 'none';
+
+      // Show score at the top
+      const scoreDisplay = document.createElement('div');
+      scoreDisplay.className = 'score-display';
+      const percentage = gradingResults.gradable > 0
+        ? Math.round((gradingResults.correctCount / gradingResults.gradable) * 100)
+        : 0;
+      scoreDisplay.innerHTML = `🎯 Your Score: <span class="score">${gradingResults.correctCount} out of ${gradingResults.gradable}</span> (${percentage}%)`;
+      qa.appendChild(scoreDisplay);
+
+      // Create a container for all graded questions
+      const gradedContainer = document.createElement('div');
+
+      // Get saved answers
+      const saved = loadAnswers();
+      const answers = (saved && saved.answers) ? saved.answers : {};
+
+      // Render each question with its status
+      questions.forEach((q, i) => {
+        const detail = gradingResults.details.find(d => d.i === i);
+        let isCorrect = false;
+        let matchScore = null;
+
+        if (detail) {
+          if (detail.type === 'match') {
+            // For match questions, we consider it correct if all matches are correct
+            isCorrect = detail.correct === detail.total;
+            matchScore = { correct: detail.correct, total: detail.total };
+          } else {
+            isCorrect = detail.ok || false;
+          }
+        }
+
+        const userAnswer = answers[i];
+
+        const gradedQuestion = document.createElement('div');
+        gradedQuestion.className = 'graded-question';
+
+        const header = document.createElement('div');
+        header.className = 'graded-question-header';
+
+        const qnum = document.createElement('div');
+        qnum.className = 'qnum';
+        qnum.textContent = 'Question ' + (i + 1);
+
+        const status = document.createElement('div');
+        status.className = 'graded-question-status ' + (isCorrect ? 'status-correct' : 'status-incorrect');
+
+        if (matchScore) {
+          status.innerHTML = `${matchScore.correct}/${matchScore.total}`;
+          status.className += ' match-score ' + (isCorrect ? 'match-score-correct' : 'match-score-incorrect');
+        } else {
+          status.innerHTML = isCorrect ? '✓' : '✗';
+        }
+
+        header.appendChild(qnum);
+        header.appendChild(status);
+        gradedQuestion.appendChild(header);
+
+        const qtext = document.createElement('div');
+        qtext.className = 'graded-question-text';
+        qtext.innerHTML = escapeHtml(q.title);
+        
+        // Add speaker button for the question text (except for match questions)
+        if (q.type !== 'match') {
+          const speakerBtn = createSpeakerButton(q.title);
+          qtext.appendChild(speakerBtn);
+        }
+        
+        gradedQuestion.appendChild(qtext);
+
+        // Show user's answer
+        const userAnswerDiv = document.createElement('div');
+        userAnswerDiv.className = 'graded-answer';
+        userAnswerDiv.innerHTML = '<strong>Your Answer:</strong>';
+
+        const userAnswerContent = document.createElement('div');
+        userAnswerContent.className = 'user-answer';
+
+        if (q.type === 'multichoice') {
+          if (q.single) {
+            if (userAnswer !== null && userAnswer !== undefined) {
+              userAnswerContent.textContent = q.options[userAnswer]?.text || 'No answer selected';
+            } else {
+              userAnswerContent.textContent = 'No answer selected';
+            }
+          } else {
+            if (Array.isArray(userAnswer) && userAnswer.length > 0) {
+              const selectedTexts = userAnswer.map(idx => q.options[idx]?.text).filter(text => text);
+              userAnswerContent.textContent = selectedTexts.join(', ') || 'No answers selected';
+            } else {
+              userAnswerContent.textContent = 'No answers selected';
+            }
+          }
+        } else if (q.type === 'shortanswer') {
+          userAnswerContent.textContent = userAnswer || 'No answer provided';
+        } else if (q.type === 'match') {
+          if (Array.isArray(userAnswer) && userAnswer.length > 0) {
+            const matches = [];
+            q.sub.forEach((s, idx) => {
+              if (userAnswer[idx]) {
+                const isMatchCorrect = userAnswer[idx] === s.right;
+                matches.push(
+                  `<div class="${isMatchCorrect ? 'match-correct' : 'match-incorrect'}">${s.left} → ${userAnswer[idx]}</div>`
+                );
+              }
+            });
+            userAnswerContent.innerHTML = matches.join('') || 'No matches made';
+          } else {
+            userAnswerContent.textContent = 'No matches made';
+          }
+        } else if (q.type === 'truefalse') {
+          userAnswerContent.textContent = userAnswer === true ? 'True' : userAnswer === false ? 'False' : 'No answer selected';
+        }
+
+        userAnswerDiv.appendChild(userAnswerContent);
+        gradedQuestion.appendChild(userAnswerDiv);
+
+        // Show correct answer if available and user was incorrect
+        if (!isCorrect) {
+          const correctAnswerDiv = document.createElement('div');
+          correctAnswerDiv.className = 'graded-answer';
+          correctAnswerDiv.innerHTML = '<strong>Correct Answer:</strong>';
+
+          const correctAnswerContent = document.createElement('div');
+          correctAnswerContent.className = 'correct-answer';
+
+          if (q.type === 'multichoice' && q.single) {
+            const correctOption = q.options.find(opt => opt.correct);
+            correctAnswerContent.textContent = correctOption ? correctOption.text : 'No correct answer specified';
+          } else if (q.type === 'shortanswer' && q.answers && q.answers.length > 0) {
+            correctAnswerContent.textContent = q.answers[0];
+          } else if (q.type === 'truefalse') {
+            correctAnswerContent.textContent = q.correct ? 'True' : 'False';
+          } else if (q.type === 'match' && q.sub) {
+            const correctMatches = q.sub.map(s => `<div>${s.left} → ${s.right}</div>`).join('');
+            correctAnswerContent.innerHTML = correctMatches;
+          }
+
+          correctAnswerDiv.appendChild(correctAnswerContent);
+          gradedQuestion.appendChild(correctAnswerDiv);
+        }
+
+        gradedContainer.appendChild(gradedQuestion);
+      });
+
+      qa.appendChild(gradedContainer);
+
+      // Add a back button
+      const backButton = document.createElement('button');
+      backButton.className = 'back-button primary';
+      backButton.textContent = '← Back to Questions';
+      backButton.addEventListener('click', () => {
+        // Show navigation and footer again
+        document.getElementById('questionNav').style.display = 'flex';
+        document.getElementById('questionFooter').style.display = 'grid';
+        // Go back to the current question
+        renderQuestion(pageIndex);
+      });
+      qa.appendChild(backButton);
+
+      setStatus('🏆 Graded');
+    }
+
+    // Home button handler
+    function homeBtnHandler() {
+      if(confirm('Go back to homepage?')) {
+        location.reload();
+      }
+    }
+
+    // UI actions
+    document.getElementById('prevBtn').addEventListener('click', () => { renderQuestion(pageIndex - 1); saveAnswers(); });
+    document.getElementById('nextBtn').addEventListener('click', () => { renderQuestion(pageIndex + 1); saveAnswers(); });
+    document.getElementById('resetBtn').addEventListener('click', () => { resetAnswers(); });
+    document.getElementById('gradeBtn').addEventListener('click', () => {
+      if (confirm('Complete test?')) {
+        saveAnswers();
+        const g = gradeAll();
+        renderGradedResults(g);
+      }
+    });
+
+    // Learn mode checkbox
+    document.getElementById('learnMode').addEventListener('change', (e) => {
+      learnMode = e.target.checked;
+      const checkBtn = document.getElementById('checkBtn');
+      checkBtn.style.display = learnMode ? 'inline-block' : 'none';
+
+      // Hide feedback when toggling learn mode
+      if (!learnMode) {
+        const feedbackContainer = document.getElementById('feedback');
+        if (feedbackContainer) {
+          feedbackContainer.style.display = 'none';
+        }
+      }
+    });
+
+    // check button for learn mode
+    document.getElementById('checkBtn').addEventListener('click', () => {
+      checkAnswerAndShowFeedback();
+    });
+
+    // export answers
+    document.getElementById('downloadBtn').addEventListener('click', () => {
+      const data = loadAnswers() || { answers: {} };
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = `exam_answers_${currentTestFilename || 'default'}.json`; a.click(); URL.revokeObjectURL(url);
+    });
+
+    // helper escaping
+    function escapeHtml(s) { if (s == null) return ''; return s.toString().replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\"/g, '&quot;'); }
+
+    // keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') document.getElementById('prevBtn').click();
+      if (e.key === 'ArrowRight') document.getElementById('nextBtn').click();
+      if (e.key === 's' && (e.ctrlKey || e.metaKey)) { e.preventDefault(); saveAnswers(); }
+    });
+
+    // on page unload, auto-save
+    window.addEventListener('beforeunload', () => { saveAnswers(true); });
+
+    // initialisation
+    init();
+  </script>
+</body>
+
+</html>

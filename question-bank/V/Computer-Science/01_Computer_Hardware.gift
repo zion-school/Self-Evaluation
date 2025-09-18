@@ -1,0 +1,301 @@
+// V std, Computer Science, Chapter 1 : Computer Hardware
+// Zion Nursery & Primary School, Kovaipudur
+// Author : Jabez Winston
+// Date : June 17, 2025
+
+$CATEGORY: $course$/Chapter-1
+
+// === Choose the correct answer ===
+
+// [tag:Choose]
+::How is the size of screen generally measured?::
+How is the size of screen generally measured?
+{
+~Horizontally
+~Vertically
+=Diagonally
+~None of these
+}
+
+// [tag:Choose]
+::What does the term "resolution" in a monitor refer to?::
+What does the term "resolution" in a monitor refer to?
+{
+~Screen refresh rate
+~Number of ports
+=Number of pixels on the screen
+~Brightness level
+}
+
+// [tag:Choose]
+::Which is the least important thing to be considered while purchasing a monitor?::
+Which is the least important thing to be considered while purchasing a monitor?
+{
+~Screen size
+~Resolution
+~Ports on the monitor
+=Thickness of monitor
+}
+
+// [tag:Choose]
+::Which device is used to convert AC power from the wall socket into DC power for internal components?::
+Which device is used to convert AC power from the wall socket into DC power for internal components?
+{
+~CPU
+=PSU
+~SSD
+~GPU
+}
+
+// [tag:Choose]
+::Which cable gives both sound and picture from the computer to the monitor?::
+Which cable gives both sound and picture from the computer to the monitor?
+{
+~DVI
+~Ethernet
+=HDMI
+~VGA
+}
+
+// [tag:Choose]
+::What kind of memory helps the computer work with open apps and files?::
+What kind of memory helps the computer work with open apps and files?
+{
+~SSD
+~CPU
+=RAM
+~DVD
+}
+
+// [tag:Choose]
+::Which part stores data even when the computer is turned off?::
+Which part stores data even when the computer is turned off?
+{
+~RAM
+=SSD
+~CPU
+~Monitor
+}
+
+// [tag:Choose]
+::What keeps the computer from getting too hot?::
+What keeps the computer from getting too hot?
+{
+~Power supply
+=Fan
+~Keyboard
+~Scanner
+}
+
+// [tag:Choose]
+::Which company makes Ryzen processors?::
+Which company makes Ryzen processors?
+{
+~Intel
+=AMD
+~NVIDIA
+~Samsung
+}
+
+// [tag:Choose]
+::Which port do you use to plug in the Internet cable?::
+Which port do you use to plug in the Internet cable?
+{
+~VGA
+~USB
+=Ethernet
+~Audio
+}
+
+// [tag:Choose]
+::Which device helps you hear sounds from your computer?::
+Which device helps you hear sounds from your computer?
+{
+~Scanner
+~Monitor
+=Speaker
+~Keyboard
+}
+
+// [tag:Choose]
+::What is one benefit of using a wireless mouse?::
+What is one benefit of using a wireless mouse?
+{
+~Faster computer
+~No need for screen
+=No wires to connect
+~Bigger display
+}
+
+// [tag:Choose]
+::What is a graphics card used for?::
+What is a graphics card used for?
+{
+~Typing letters
+=Watching movies and playing games better
+~Printing documents
+~Scanning photos
+}
+
+// [tag:Choose]
+::What kind of device is a printer?::
+What kind of device is a printer?
+{
+~Input
+~Storage
+=Output
+~Power
+}
+
+// [tag:Choose]
+::Which storage medium is the fastest among the following?::
+Which storage medium is the fastest among the following?
+{
+~Hard Disk Drive (HDD)
+~Digital Versatile Disc (DVD)
+=Solid State Drive (SSD)
+~Floppy Disk
+}
+
+// === Fill in the blanks ===
+// [tag:Fill up]
+::The __________ shows pictures and text from the computer.::
+The {=monitor =screen} shows pictures and text from the computer.
+
+// [tag:Fill up]
+::The __________ helps you move the pointer and click on things.::
+The {=mouse} helps you move the pointer and click on things.
+
+// [tag:Fill up]
+::The __________ is where you type letters and numbers.::
+The {=keyboard} is where you type letters and numbers.
+
+// [tag:Fill up]
+::The __________ stores long-term files like games and photos.::
+The {=hard drive =storage drive =HDD =SSD} stores long-term files like games and photos.
+
+// [tag:Fill up]
+::The __________ keeps all parts of the computer connected.::
+The {=motherboard =mainboard} keeps all parts of the computer connected.
+
+// [tag:Fill up]
+::The CPU is also known as the __________ of the computer.::
+The CPU is also known as the {=brain} of the computer.
+
+// [tag:Fill up]
+::The power supply gives __________ to all parts of the computer.::
+The power supply gives {=power =electricity} to all parts of the computer.
+
+// [tag:Fill up]
+::The small camera used for video calls is called a __________.::
+The small camera used for video calls is called a {=webcam =webcamera}.
+
+// [tag:Fill up]
+::To hear music, you need __________ or headphones.::
+To hear music, you need {=speakers =audio output} or headphones.
+
+// [tag:Fill up]
+::__________ is the short-term memory of the computer.::
+{=RAM =random access memory} is the short-term memory of the computer.
+
+// [tag:Fill up]
+::The __________ helps you copy physical photos and documents into the computer.::
+The {=scanner} helps you copy physical photos and documents into the computer.
+
+// [tag:Fill up]
+::__________ cables are used to connect screens with sharp pictures.::
+{=HDMI =Display port =DisplayPort} cables are used to connect screens with sharp pictures.
+
+// === Expand these Abbreviations ===
+// [tag: Abbreviation] [tag: Fill up]
+::CPU::
+CPU {=Central Processing Unit}
+
+// [tag: Abbreviation] [tag: Fill up]
+::SMPS::
+SMPS {=Switched Mode Power Supply =Switched-Mode Power Supply}
+
+// [tag: Abbreviation] [tag: Fill up]
+::VGA::
+VGA {=Video Graphics Array =video graphic array}
+
+// [tag: Abbreviation] [tag: Fill up]
+::HDMI::
+HDMI {=High Definition Multimedia Interface}
+
+// [tag: Abbreviation] [tag: Fill up]
+::DVI::
+DVI {=Digital Visual Interface}
+
+// [tag: Abbreviation] [tag: Fill up]
+::RAM::
+RAM {=Random Access Memory}
+
+// [tag: Abbreviation] [tag: Fill up]
+::HDD::
+HDD {=Hard Disk Drive}
+
+// [tag: Abbreviation] [tag: Fill up]
+::SSD::
+SSD {=Solid State Drive}
+
+// [tag: Abbreviation] [tag: Fill up]
+::DVD::
+DVD {=Digital Versatile Disc =Digital Video Disc}
+
+// [tag: Abbreviation] [tag: Fill up]
+::USB::
+USB {=Universal Serial Bus}
+
+// [tag: Match]
+::Match - Set 1::
+Match the following computer components with their functions.
+{
+    = CPU -> Brain of the computer
+    = Monitor -> Shows images
+    = PSU -> Sends power to parts
+    = Mouse -> Moves pointer
+    = RAM -> Short-term memory
+}
+
+// [tag: Match]
+::Match - Set 2::
+Match the following hardware items with their functions.
+{
+    = USB -> Connects devices like mouse
+    = HDMI -> Used for sound and picture
+    = VGA -> Older video port
+    = Ethernet Port -> Connects to the internet
+    = Fan -> Keeps parts cool
+    = Scanner -> Copies papers to computer
+    = Speaker -> Plays sound
+}
+
+// === True or False ===
+// [tag: True or False]
+::Computer Motherboard can be powered directly from wall socket.::
+Computer Motherboard can be powered directly from wall socket. {FALSE}
+
+// [tag: True or False]
+::HDMI port is present in modern monitors and televisions.::
+HDMI port is present in modern monitors and televisions. {TRUE}
+
+// [tag: True or False]
+::A 3.5 inch hard disk drive is used in laptops.::
+A 3.5 inch hard disk drive is used in laptops. {FALSE}
+
+// [tag: True or False]
+::Ethernet port can be used to connect keyboard and mouse.::
+Ethernet port can be used to connect keyboard and mouse. {FALSE}
+
+// [tag: True or False]
+::Data transfer via USB 2.0 is faster than USB 3.0.::
+Data transfer via USB 2.0 is faster than USB 3.0. {FALSE}
+
+// [tag: True or False]
+::Hard disk drives are fragile and need to be handled with care.::
+Hard disk drives are fragile and need to be handled with care. {TRUE}
+
+// [tag: True or False]
+::VGA cables carry both audio and video.::
+VGA cables carry both audio and video. {FALSE}

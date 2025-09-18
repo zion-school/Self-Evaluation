@@ -1,0 +1,264 @@
+// IV std, Computer Science, Chapter 1 : Computer Hardware
+// Zion Nursery & Primary School, Kovaipudur
+// Author : Jabez Winston
+// Date : July 01, 2025
+
+$CATEGORY: $course$/Chapter-1
+
+// === Choose the correct answer ===
+
+// [tag:Choose]
+::The commonly used computer keyboard layout in India is::
+The commonly used computer keyboard layout in India is
+{
+=QWERTY - United States (US)
+~AZERTY
+~QWERTZ
+~Tamil Typewriter
+}
+
+// [tag:Choose]
+::Which of the following is not a modifier key ?::
+Which of the following is not a modifier key ?
+{
+~Ctrl
+=Tab
+~Alt
+~Shift ⇧
+}
+
+// [tag:Choose]
+::Which key is absent in Apple keyboard::
+Which key is absent in Apple keyboard
+{
+~Ctrl
+~Shift ⇧
+=Num lock
+~Caps lock
+}
+
+// [tag:Choose]
+::Command ⌘ key is same as __________ on normal keyboard::
+Command ⌘ key is same as __________ on normal keyboard
+{
+~Alt
+~Ctrl
+=Windows ⊞
+~Tab
+}
+
+// [tag:Choose]
+::Which is most compact computer of the following ?::
+Which is most compact computer of the following ?
+{
+~Tower PC
+~Mini PC
+=Tablet
+~All-in-One PC
+}
+
+// [tag:Choose]
+::On a Tamil99 keyboard, vowels/உயிரெழுத்துக்கள் (அ, ஆ, இ, ...) are located on the __________ and consonants/மெய்யெழுத்துக்கள் (க், ங், ச், ...) are located on the __________::
+On a Tamil99 keyboard, vowels/உயிரெழுத்துக்கள் (அ, ஆ, இ, ...) are located on the __________ and consonants/மெய்யெழுத்துக்கள் (க், ங், ச், ...) are located on the __________
+{
+~top, bottom
+=left, right
+~right, left
+~bottom, top
+}
+
+// [tag:Choose]
+::Which kind of computer is easily upgradeable at low cost ?::
+Which kind of computer is easily upgradeable at low cost ?
+{
+=Tower PC
+~Laptop
+~All in One PC
+~Tablet
+}
+
+// [tag:Choose]
+::Which device converts paper image into digital?::
+Which device converts paper image into digital?
+{
+~Printer
+~Speaker
+=Scanner
+~Monitor
+}
+
+// [tag:Choose]
+::Which button is found in an advanced mouse ?::
+Which button is found in an advanced mouse ?
+{
+~Middle
+~Left
+=Forward
+~Right
+}
+
+// [tag:Choose]
+::Which PC has most number of ports ?::
+Which PC has most number of ports ?
+{
+=Tower PC
+~Mini PC
+~Stick PC
+~AIO (All-in-One) PC
+}
+
+// [tag:Choose]
+::Which of the following is not found inside Desktop CPU case ?::
+Which of the following is not found inside Desktop CPU case ?
+{
+~RAM
+~Hard disk
+~Fan
+=Keyboard
+}
+
+// [tag:Choose]
+::Which key is use to take full photo of content displayed on the monitor ?::
+Which key is use to take full photo of content displayed on the monitor ?
+{
+~F7
+=Print Screen
+~Page Up
+~Pause/Break
+}
+
+// === Fill in the blanks ===
+
+// [tag:Fill up]
+::The __________ key is used to type uppercase or capital characters.::
+The {=Shift=Caps Lock} key is used to type uppercase or capital characters.
+
+// [tag:Fill up]
+::A __________ is used to print information.::
+A {=printer} is used to print information.
+
+// [tag:Fill up]
+::The keys Ä, Ö, Ü (umlauts) are found in __________ keyboard.::
+The keys Ä, Ö, Ü (umlauts) are found in {=German} keyboard.
+
+// [tag:Fill up]
+::French and Belgium use __________ keyboard layout.::
+French and Belgium use {=AZERTY} keyboard layout.
+
+// [tag:Fill up]
+::__________ LED/light should be ON to use the number pad on a full-size keyboard.::
+{=Num Lock} LED/light should be ON to use the number pad on a full-size keyboard.
+
+// [tag:Fill up]
+::__________ PC combines CPU and monitor to reduce usage of cables.::
+{=All-in-One =AIO} PC combines CPU and monitor to reduce usage of cables.
+
+// [tag:Fill up]
+::An example of computer which is less upgradeable and repairable is __________.::
+An example of computer which is less upgradeable and repairable is {=Laptop =Tablet=All-in-One PC}.
+
+// [tag:Fill up]
+::The device which get sound as input is called __________.::
+The device which get sound as input is called {=microphone =mic}.
+
+// [tag:Fill up]
+::Physical parts of a computer are called __________.::
+Physical parts of a computer are called {=hardware}.
+
+// [tag:Fill up]
+::Programs and instructions are called __________.::
+Programs and instructions are called {=software}.
+
+// === Match the Following ===
+
+// [tag:Match]
+::Match - Set 1::
+Match the following - Computer components
+{
+= CPU -> Processes data and instructions
+= Joystick -> Play games
+= Mouse -> Moves pointer
+= Scanner -> Scans images
+= Touchpad -> Laptop
+= Printer -> Prints on paper
+= Monitor -> Displays output
+}
+
+// [tag:Match]
+::Match - Set 2::
+Match the following - Keyboard buttons
+{
+= Function keys -> F1 to F12
+= Navigation keys -> Arrow keys ( ↑, ↓, ←, → )
+= Alphanumeric keys -> A to Z, 0 to 9
+= Invisible characters -> Tab, Spacebar, Enter
+= Modifier keys -> Ctrl, Shift, Alt
+}
+
+// === True or False ===
+
+// [tag:True or False]
+::The ⌥ (Option) key on Apple keyboard is same as Alt.::
+The ⌥ (Option) key on Apple keyboard is same as Alt. {TRUE}
+
+// [tag:True or False]
+::Tamil Typewriter keyboard is easy to use compared to Tamil99 keyboard.::
+Tamil Typewriter keyboard is easy to use compared to Tamil99 keyboard. {FALSE}
+
+// [tag:True or False]
+::German keyboard uses QWERTZ layout.::
+German keyboard uses QWERTZ layout. {TRUE}
+
+// [tag:True or False]
+::Print screen key is absent in Apple keyboard.::
+Print screen key is absent in Apple keyboard. {TRUE}
+
+// [tag:True or False]
+::Middle button is same as scroll wheel in the mouse.::
+Middle button is same as scroll wheel in the mouse. {TRUE}
+
+// [tag:True or False]
+::Tablets and smartphones are also computers.::
+Tablets and smartphones are also computers. {TRUE}
+
+// [tag:True or False]
+::Hardware refers to the programs used in a computer.::
+Hardware refers to the programs used in a computer. {FALSE}
+
+// [tag:True or False]
+::Speaker and Printer are input devices.::
+Speaker and Printer are input devices. {FALSE}
+
+// === Answer in brief ===
+
+// [tag:Short Answer]
+::Write down examples of input and output devices.::
+Write down examples of input and output devices. { }
+
+// [tag:Short Answer]
+::Write the alphabet arrangement on a English US keyboard layout.::
+Write the alphabet arrangement on a English US keyboard layout. { }
+
+// [tag:Short Answer]
+::List down the modifier keys and some uses of those keys.::
+List down the modifier keys and some uses of those keys. { }
+
+// [tag:Short Answer]
+::List down various form factors of computers.::
+List down various form factors of computers. { }
+
+// [tag:Short Answer]
+::List down parts inside the Desktop CPU case.::
+List down parts inside the Desktop CPU case. { }
+
+// [tag:Short Answer]
+::Write down about buttons in the mouse.::
+Write down about buttons in the mouse. { }
+
+// [tag:Short Answer]
+::What are the advantages of Desktop PC ?::
+What are the advantages of Desktop PC ? { }
+
+// [tag:Short Answer]
+::List down differences between Hardware and Software.::
+List down differences between Hardware and Software. { }

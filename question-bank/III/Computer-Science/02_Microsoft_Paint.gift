@@ -1,0 +1,222 @@
+// 3rd std, Computer Science, Chapter 2: Microsoft Paint
+// Zion Nursery & Primary School, Kovaipudur
+// Author: Jabez Winston
+// Date: September 10, 2025
+// TODO : Add icons & images
+
+$CATEGORY: $course$/Chapter-2
+
+// === Choose the correct answer ===
+
+// [tag:Choose]
+::After drawing a clock, you write numbers on the clock dial using::
+After drawing a clock, you write numbers on the clock dial using
+{
+~Mail tool
+~Save As tool
+=Text tool
+~Pencil tool
+}
+
+// [tag:Choose]
+::Shapes required to draw a simple cake are::
+Shapes required to draw a simple cake are
+{
+~Ovals, triangles & diamonds
+~Polygons, 3-point star & rectangles
+=Ovals, lines & rectangles
+~Pencil, eraser & colors
+}
+
+// [tag:Choose]
+::To fill color in the shapes, you use::
+To fill color in the shapes, you use
+{
+~Pencil tool
+=Fill with color tool
+~Pick color tool
+~Eraser tool
+}
+
+// [tag:Choose]
+::The option used to change the triangle drawing to point left is::
+The option used to change the triangle drawing to point left is
+{
+~Rotate Right 90°
+=Rotate Left 90°
+~Rotate 180°
+~Flip Horizontal
+}
+
+// [tag:Choose]
+::The option used to change the text to mirrored text is::
+The option used to change the text to mirrored text is
+{
+~Rotate 180°
+=Flip Horizontal
+~Flip Vertical
+~Rotate Left 90°
+}
+
+// [tag:Choose]
+::The keyboard shortcut for undoing a recently made mistake is::
+The keyboard shortcut for undoing a recently made mistake is
+{
+~Ctrl + Y
+=Ctrl + Z
+~Ctrl + D
+~Ctrl + U
+}
+
+// [tag:Choose]
+::_____ is helpful to carefully make tiny changes to the picture.::
+_____ is helpful to carefully make tiny changes to the picture.
+{
+=Magnifier
+~Eraser
+~Fill color
+~Save
+}
+
+// [tag:Choose]
+::Primary colors on a Computer monitor or Television (TV) are::
+Primary colors on a Computer monitor or Television (TV) are
+{
+~Red, Blue & Yellow
+=Red, Green & Blue
+~Cyan, Magenta & Yellow
+~Green, Blue & Yellow
+}
+
+// [tag:Choose]
+::Main ink colors used in a color printer are::
+Main ink colors used in a color printer are
+{
+~Green, Blue & Yellow
+=Cyan, Magenta & Yellow
+~Red, Green & Blue
+~Green, Blue & Yellow
+}
+
+// [tag:Choose]
+::Other name for oval is::
+Other name for oval is
+{
+~Parabola
+~Hyperbola
+=Ellipse
+~Circle
+}
+
+// === Fill in the blanks ===
+
+// [tag:Fill up]
+::Inverted (opposite) color of black is _____ ::
+Inverted (opposite) color of black is {=White}
+
+// [tag:Fill up]
+::Keyboard shortcut to save picture is _____::
+Keyboard shortcut to save picture is {=Ctrl + S}
+
+// [tag:Fill up]
+::To start Paint, you can go to the Start menu and type ____::
+To start Paint, you can go to the Start menu and type {=Paint}
+
+// [tag:Fill up]
+::The _____ tool is used to draw freehand lines.::
+The {=Pencil} tool is used to draw freehand lines.
+
+// [tag:Fill up]
+::Thickness of the lines drawn can be changed using the _____ option.::
+Thickness of the lines drawn can be changed using the {=Size} option.
+
+// [tag:Fill up]
+::The _____ tool is used to make a copy, cut, or delete a part of the drawing.::
+The {=Select} tool is used to make a copy, cut, or delete a part of the drawing.
+
+// [tag:Fill up]
+::To fill an entire shape with a color, you use the _____ tool.::
+To fill an entire shape with a color, you use the {=Fill with color} tool.
+
+// [tag:Fill up]
+::The _____ key can be used to zoom in and out with the mouse wheel.::
+The {=Ctrl} key can be used to zoom in and out with the mouse wheel.
+
+// === True or False ===
+
+// [tag:True or False]
+::We draw lines using different colors in Paint.::
+We draw lines using different colors in Paint. {TRUE}
+
+// [tag:True or False]
+::We can create custom colors in Paint. ::
+We can create custom colors in Paint. {TRUE}
+
+// [tag:True or False]
+::The Magnifier tool makes the drawing smaller.::
+The Magnifier tool makes the drawing smaller. {FALSE}
+
+// [tag:True or False]
+::The keyboard shortcut for saving file is Ctrl + S.::
+The keyboard shortcut for saving file is Ctrl + S. {TRUE}
+
+// [tag:True or False]
+::You can draw a circle using the Oval shape tool::
+You can draw a circle using the Oval shape tool. {TRUE}
+
+// [tag:True or False]
+::The Eraser tool is used to select a color from the drawing.::
+The Eraser tool is used to select a color from the drawing. {FALSE}
+
+// [tag:True or False]
+::The keyboard shortcut for copying a selection is Ctrl + C. ::
+The keyboard shortcut for copying a selection is Ctrl + C. {TRUE}
+
+// [tag:True or False]
+::You can only draw with one color in Paint.::
+You can only draw with one color in Paint. {FALSE}
+
+// [tag:True or False]
+::The Text tool is used to draw perfect shapes.::
+The Text tool is used to draw perfect shapes. {FALSE}
+
+// [tag:True or False]
+::You can resize an image after you have drawn it.::
+You can resize an image after you have drawn it. {TRUE}
+
+// === Match the Following ===
+
+// [tag:Match]
+::Mixing lights::
+Match the following
+{
+=Red + Green -> Yellow
+=Red + Blue -> Magenta
+=Green + Blue -> Cyan
+=Red + Green + Blue -> White
+}
+
+// [tag:Match]
+::Mixing inks::
+Match the following
+{
+= Cyan + Magenta -> Blue
+= Cyan + Yellow -> Green
+= Magenta + Yellow -> Red
+= Cyan + Magenta + Yellow -> Black
+= Red + Yellow -> Orange
+= Blue + Yellow -> Natural Green
+= Black + White -> Gray
+}
+
+// [tag:Match]
+// ::Paint toolbar icons::
+// Match the following
+// {
+// = Pencil icon -> Pencil
+// = Fill with color icon -> Fill with color
+// = Text icon -> Text
+// = Eraser icon -> Eraser
+// = Pick color icon -> Color picker
+// = Magnifier icon -> Magnifier
+// }

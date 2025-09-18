@@ -1,0 +1,266 @@
+// Class std, Computer Science, Chapter 2: Windows 10
+// Zion Nursery & Primary School, Kovaipudur
+// Author: Jabez Winston
+// Date: August 27, 2025
+
+$CATEGORY: $course$/Chapter-2
+
+// === Choose the correct answer ===
+
+// [tag:Choose]
+::Which of the following is a simple text editor for creating and editing plain text files?::
+Which of the following is a simple text editor for creating and editing plain text files?
+{
+~ Paint
+~ Wordpad
+= Notepad
+~ Calculator
+}
+
+// [tag:Choose]
+::The main work area after logging in to Windows is called the ______::
+The main work area after logging in to Windows is called the ______
+{
+~ Taskbar
+= Desktop
+~ File Explorer
+~ Start Menu
+}
+
+// [tag:Choose]
+::What is the purpose of the Recycle Bin ?::
+What is the purpose of the Recycle Bin ?
+{
+~ To permanently store all deleted files.
+~ To free up space without deleting files.
+= To temporarily store deleted files.
+~ To organize files and folders.
+}
+
+// [tag:Choose]
+::A collection of data stored under a name is _____::
+A collection of data stored under a name is _____
+{
+~ Folder
+~ Shortcut
+= File
+~ Program
+}
+
+// [tag:Choose]
+:: What is the function of the Maximize button on a window? ::
+What is the function of the Maximize button on a window?
+{
+~ Close the window.
+~ Hide the window.
+= Enlarge the window to full screen.
+~ Move the window to taskbar.
+}
+
+// [tag:Choose]
+:: Which built-in application is used for basic graphics editing? ::
+ Which built-in application is used for basic graphics editing?
+{
+~ Wordpad
+~ Notepad
+= Paint
+~ Calculator
+}
+
+// [tag:Choose]
+::Which type of file has the extension - .docx ?::
+Which type of file has the extension - .docx ?
+{
+~ Video file
+~ Plain text file
+= Microsoft Word document
+~ Picture file
+}
+
+// [tag:Choose]
+::Which component provides quick access to running programs?::
+Which component provides quick access to running programs?
+{
+~ Wallpaper
+~ Desktop
+= Taskbar
+~ Icons
+}
+
+// [tag:Choose]
+::Which file extension is used for an executable program ?::
+Which file extension is used for an executable program ?
+{
+~ .txt
+~ .png
+~ .mp4
+= .exe
+}
+
+// [tag:Choose]
+::What is a folder used for ?::
+What is a folder used for ?
+{
+~ Run an application.
+~ View or run a file.
+~ Store deleted files temporarily.
+= To keep data organized.
+}
+
+// [tag:Choose]
+::To move or duplicate files and folders, you would use which operations ?::
+To move or duplicate files and folders, you would use which operations ?
+{
+~ Open, Rename, Delete
+= Cut, Copy, Paste
+~ Minimize, Maximize, Close
+~ Save, Print, Share
+}
+
+// [tag:Choose]
+::The first version of Windows was released in what year?::
+The first version of Windows was released in what year?
+{
+~ 1995
+~ 2015
+= 1985
+~ 2000
+}
+
+// [tag:Choose]
+::Which app provides basic and scientific calculations?::
+Which app provides basic and scientific calculations?
+{
+~ Wordpad
+~ Notepad
+~ Paint
+= Calculator
+}
+
+// [tag:Choose]
+::What is the purpose of the Minimize button on a window?::
+What is the purpose of the Minimize button on a window?
+{
+~ Close the window.
+= Hide the window without closing.
+~ Enlarge the window.
+~ Move the window to another screen.
+}
+
+// [tag:Choose]
+::Which GUI element is used by Volume Control ?::
+Which GUI element is used by Volume Control ?
+{
+~ Check box
+~ Drop-down list
+~ Scroll bar
+= Slider
+}
+
+// === Fill in the Blanks ===
+
+// [tag:Fill up]
+::Windows 10 was released in the year __________::
+Windows 10 was released in the year {=2015}
+
+// [tag:Fill up]
+::The __________ key is used to take screenshot of what is displayed on the monitor.::
+The {=Print Screen} key is used to take screenshot of what is displayed on the monitor.
+
+// [tag:Fill up]
+:: __________ is used to navigate and manage files and folders.::
+{=File Explorer} is used to navigate and manage files and folders.
+
+// [tag:Fill up]
+::A container for files is called a __________ ::
+A container for files is called a {=Folder}
+
+// [tag:Fill up]
+::The file extension of file 4th-students.docx is __________ ::
+The file extension of file 4th-students.docx is {=.docx =docx}
+
+// [tag:Fill up]
+::The keyboard shortcut for pasting copied text, data is __________::
+The keyboard shortcut for pasting copied text, data is {=Ctrl + V =Ctrl+V}
+
+// [tag:Fill up]
+::The Internet browser that comes with Windows 10 is __________::
+The Internet browser that comes with Windows 10 is {=Edge}
+
+// [tag:Fill up]
+::The __________ command creates a folder or directory.::
+The {=mkdir} command creates a folder or directory.
+
+// [tag:Fill up]
+::The .jpg file extension is for __________::
+The .jpg file extension is for {=Pictures}
+
+// [tag:Fill up]
+::The expansion of PDF is __________::
+The expansion of PDF is {=Portable Document Format}
+
+// === True or False ===
+
+// [tag:True or False]
+::Windows is an operating system developed by Apple.::
+Windows is an operating system developed by Apple. {FALSE}
+
+// [tag:True or False]
+::Notepad in Windows 10 supports adding pictures and styling text.::
+Notepad in Windows 10 supports adding pictures and styling text. {FALSE}
+
+// [tag:True or False]
+::The keyboard shortcut for saving documents, pictures is Ctrl + S.::
+The keyboard shortcut for saving documents, pictures is Ctrl + S. {TRUE}
+
+// [tag:True or False]
+::MP3 files are audio files.::
+MP3 files are audio files. {TRUE}
+
+// [tag:True or False]
+::MP4 files are video files.::
+MP4 files are video files. {TRUE}
+
+// [tag:True or False]
+::File Explorer is used to manage files and folders.::
+File Explorer is used to manage files and folders. {TRUE}
+
+// [tag:True or False]
+::You can restore a file from the Recycle Bin after it is deleted.::
+You can restore a file from the Recycle Bin after it is deleted. {TRUE}
+
+// [tag:True or False]
+::The Minimize button closes a window.::
+The Minimize button closes a window. {FALSE}
+
+// [tag:True or False]
+::The .exe file extension is used by software programs.::
+The .exe file extension is used by software programs. {TRUE}
+
+// [tag:True or False]
+::Date & Time are found in the Notification area.::
+Date & Time are found in the Notification area. {TRUE}
+
+// === Match the Following ===
+
+// [tag:Match]
+::Match the following - Built-in applications::
+{
+= File Explorer -> Navigate and manage files
+= Notepad -> Simple text editor
+= Recycle Bin -> Stores deleted files
+= Edge -> Browse the Internet
+= Wordpad -> Allows basic formatting of text
+= Command Prompt -> Text-based interface for commands
+= Paint -> Basic graphics editor
+}
+
+// [tag:Match]
+::Match the following - File Types::
+{
+= .docx, .odt -> Documents
+= .jpg, .bmp, .png -> Pictures
+= .mp3, .wav, .wma -> Sound & Music
+= .mp4, .avi, .mov -> Videos
+= .exe, .msi, .dll -> Software
+}

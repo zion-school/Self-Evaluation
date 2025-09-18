@@ -1,0 +1,77 @@
+// III std, Computer Science, Chapter 1 : Computer Keyboard
+// Zion Nursery & Primary School, Kovaipudur
+// Author : Jabez Winston
+// Date : July 17, 2025
+
+$CATEGORY: $course$/Chapter-1
+
+// === Fill in the blanks ===
+
+// [tag:Fill up]
+:: The __________ key is used for creating space between words ::
+The {=Spacebar} key is used for creating space between words.
+
+// [tag:Fill up]
+:: The first key on the standard keyboard is __________ ::
+The first key on the standard keyboard is {=Escape}.
+
+// [tag:Fill up]
+:: Number of keys on a standard computer keyboard is __________ ::
+Number of keys on a standard computer keyboard is {=104}.
+
+// [tag:Fill up]
+:: The __________ key is used to erase a character. ::
+The {=Backspace} key is used to erase a character.
+
+// [tag:Fill up]
+:: The special character \# is known as __________ ::
+The special character \# is known as {=Hash}.
+
+// [tag:Fill up]
+:: The longest key on the keyboard is __________ ::
+The longest key on the keyboard is {=Spacebar}.
+
+// [tag:Fill up]
+:: The __________ key is used for typing capital letters ::
+The {=Shift} key is used for typing capital letters.
+
+// [tag:Fill up]
+:: The __________ key is used to go to the next line. ::
+The {=Enter} key is used to go to the next line.
+
+// === True or False ===
+
+// [tag:True or False]
+:: Number of English Alphabets on the keyboard is 25 ::
+Number of English Alphabets on the keyboard is 25 {FALSE}
+
+// [tag:True or False]
+:: Enter key is used to erase characters ::
+Enter key is used to erase characters {FALSE}
+
+// [tag:True or False]
+:: Tab key add more more space ::
+Tab key add more more space {TRUE}
+
+// [tag:True or False]
+:: There are 2 Shift keys on the keyboard ::
+There are 2 Shift keys on the keyboard {TRUE}
+
+// [tag:True or False]
+:: / character is called Back slash ::
+/ character is called Back slash {FALSE}
+
+// === Match the Following ===
+
+// [tag:Match]
+::Match - Keyboard Symbols::
+Match the following
+{
+= ? -> Question mark
+= @ -> At
+= $ -> Dollar
+= * -> Asterisk/Star
+= \~ -> Tilde
+= ^ -> Caret
+= ! -> Exclamation mark
+}
