@@ -1,0 +1,210 @@
+// 3rd std, Computer Science, Chapter 3: Logo
+// Zion Nursery & Primary School, Kovaipudur
+// Author : Jabez Winston
+// Date : November 09, 2025
+
+$CATEGORY: $course$/Chapter-3
+
+// === Choose the correct answer ===
+
+// [tag:Choose]
+::Logo Language was designed in the year::
+Logo Language was designed in the year
+{
+~1960
+=1967
+~1977
+~1980
+}
+
+// [tag:Choose]
+::Short form of FORWARD command is::
+Short form of FORWARD command is
+{
+~FW
+~FO
+=FD
+~FR
+}
+
+// [tag:Choose]
+::The statement REPEAT 4 [FD 50 RT 90] draws a::
+The statement REPEAT 4 [FD 50 RT 90] draws a
+{
+~Triangle
+=Square
+~Pentagon
+~Circle
+}
+
+// [tag:Choose]
+::The expansion of PU command is::
+The expansion of PU command is
+{
+=Pen Up
+~Pen Update
+~Pen Undo
+~Pen Under
+}
+
+// [tag:Choose]
+::Number of sides in a hexagon is::
+Number of sides in a hexagon is
+{
+~4
+~5
+=6
+~8
+}
+
+// [tag:Choose]
+::A triangle with all sides equal is called::
+A triangle with all sides equal is called
+{
+~Isosceles triangle
+~Scalene triangle
+~Right-angled triangle
+=Equilateral triangle
+}
+
+// [tag:Choose]
+::Which of the following statements is true for a square ?::
+Which of the following statements is true for a square ?
+{
+~Opposite sides are equal & all angles are 90°
+~All sides are equal & all angles are 60°
+=All sides are equal & all angles are 90°
+~Opposite sides are equal & all angles are 60°
+}
+
+// [tag:Choose]
+::Angle is measured in::
+Angle is measured in
+{
+~centimeter (cm)
+~litre (l)
+=degree (°)
+~kilogram (kg)
+}
+
+// [tag:Choose]
+::The instrument used to measure angle is called::
+The instrument used to measure angle is called
+{
+~Ruler
+~Compass
+~Thermometer
+=Protractor
+}
+
+// [tag:Choose]
+::Which of the following is called a right angle?::
+Which of the following is called a right angle?
+{
+=90°
+~45°
+~180°
+~60°
+}
+
+// === Fill in the blanks ===
+
+// [tag:Fill up]
+::The Logo command to clear the screen is ______::
+The Logo command to clear the screen is {=CS =CLEARSCREEN}.
+
+// [tag:Fill up]
+::The command to go to initial/original position is ______::
+The command to go to initial/original position is {=HOME}.
+
+// [tag:Fill up]
+::Short form of LEFT command is ______::
+Short form of LEFT command is {=LT}.
+
+// [tag:Fill up]
+::The angle to turn to make a square or rectangle is ______ degrees::
+The angle to turn to make a square or rectangle is {=90} degrees.
+
+// [tag:Fill up]
+::Number of sides on a pentagon is ______::
+Number of sides on a pentagon is {=5}.
+
+// [tag:Fill up]
+::The ______ command allows the turtle to move without drawing::
+The {=PENUP =PU} command allows the turtle to move without drawing.
+
+// [tag:Fill up]
+::The ______ command hides turtle or arrow head::
+The {=HIDETURTLE =HT} command hides turtle or arrow head.
+
+// [tag:Fill up]
+::The ______ command is useful for repeating a group of commands certain number of times::
+The {=REPEAT} command is useful for repeating a group of commands certain number of times.
+
+// [tag:Fill up]
+::______ is a shape with 3 sides::
+{=Triangle} is a shape with 3 sides.
+
+// [tag:Fill up]
+::The expanded form of command BK is ______::
+The expanded form of command BK is {=BACK}.
+
+// === True or False ===
+
+// [tag:True or False]
+::The command CSC clears the screen::
+The command CSC clears the screen {FALSE}
+
+// [tag:True or False]
+::The short form of RIGHT command is RT::
+The short form of RIGHT command is RT {TRUE}
+
+// [tag:True or False]
+::A pentagon has 6 sides::
+A pentagon has 6 sides {FALSE}
+
+// [tag:True or False]
+::The command PU is used to move without drawing::
+The command PU is used to move without drawing {TRUE}
+
+// [tag:True or False]
+::All sides of a square are equal in length::
+All sides of a square are equal in length {TRUE}
+
+// [tag:True or False]
+::Each angle in a square is 50 degrees::
+Each angle in a square is 50 degrees {FALSE}
+
+// [tag:True or False]
+::CLEAN command clears the screen without bringing turtle to HOME position::
+CLEAN command clears the screen without bringing turtle to HOME position {TRUE}
+
+// [tag:True or False]
+::There is no short form for REPEAT command::
+There is no short form for REPEAT command {TRUE}
+
+// === Match the Following (Angles) ===
+
+// [tag:Match]
+// ::Match the following Angles::
+// Match the following Angles
+// {
+// = Angle 1 -> 15°
+// = Angle 2 -> 90°
+// = Angle 3 -> 45°
+// = Angle 4 -> 120°
+// = Angle 5 -> 180°
+// }
+
+// [tag:Match]
+::Match the following Logo Code & Shapes::
+Match the following Logo Code & Shapes
+{
+= REPEAT 3 [FD 50 LT 120] -> Triangle
+= REPEAT 4 [FD 50 LT 90] -> Square
+= REPEAT 2 [FD 50 LT 90 FD 100 LT 90] -> Rectangle
+= REPEAT 5 [FD 100 LT 72] -> Pentagon
+= REPEAT 5 [FD 100 LT 144] -> 5 point star
+= REPEAT 6 [FD 100 LT 60] -> Hexagon
+= REPEAT 360 [FD 1 LT 1] -> Circle
+}

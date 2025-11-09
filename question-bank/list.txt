@@ -1,5 +1,6 @@
 III/Computer-Science/01_Computer_Keyboard.gift
 III/Computer-Science/02_Microsoft_Paint.gift
+III/Computer-Science/03_Logo.gift
 IV/Computer-Science/01_Computer_Hardware.gift
 IV/Computer-Science/02_Windows_10.gift
 V/Computer-Science/01_Computer_Hardware.gift
