@@ -1,0 +1,244 @@
+// V std, Computer Science, Chapter 3: Computer Storage
+// Zion Nursery & Primary School, Kovaipudur
+// Author : Jabez Winston
+// Date : November 09, 2025
+
+$CATEGORY: $course$/Chapter-3
+
+// === Choose the correct answer ===
+
+// [tag:Choose]
+::Which of the following is not currently used for storage?::
+Which of the following is not currently used for storage?
+{
+~SD Card
+~USB Flash Drive
+=Floppy Disk
+~Solid State Drive (SSD)
+}
+
+// [tag:Choose]
+::Which storage device has no moving parts and is faster than traditional hard drives?::
+Which storage device has no moving parts and is faster than traditional hard drives?
+{
+~Hard Disk Drive (HDD)
+=Solid State Drive (SSD)
+~DVD
+~Floppy Disk
+}
+
+// [tag:Choose]
+::What is cloud storage?::
+What is cloud storage?
+{
+~A physical storage device
+~A type of optical disc
+=Storing data on remote servers accessed via the Internet
+~A type of magnetic storage
+}
+
+// [tag:Choose]
+::Which of the following is a type of optical disc used for storage?::
+Which of the following is a type of optical disc used for storage?
+{
+~USB Flash Drive
+=DVD
+~Hard Disk Drive (HDD)
+~Solid State Drive (SSD)
+}
+
+// [tag:Choose]
+::Which of the following storage devices is considered obsolete and rarely used today?::
+Which of the following storage devices is considered obsolete and rarely used today?
+{
+~SD Card
+~USB Flash Drive
+=Floppy Disk
+~Solid State Drive (SSD)
+}
+
+// [tag:Choose]
+::Which is the smallest storage unit of the following?::
+Which is the smallest storage unit of the following?
+{
+~Gigabyte (GB)
+=Kilobyte (kB)
+~Megabyte (MB)
+~Terabyte (TB)
+}
+
+// [tag:Choose]
+::Which of the following is a small and light weight storage device ?::
+Which of the following is a small and light weight storage device ?
+{
+=SDcard
+~DVD
+~SSD
+~HDD
+}
+
+// [tag:Choose]
+::On Windows OS, 1 KB \=::
+On Windows OS, 1 KB \=
+{
+=1024 B
+~1024 bits
+~1000 B
+~1024 MB
+}
+
+// [tag:Choose]
+::Which of the following is uses flash memory for storage?::
+Which of the following is uses flash memory for storage?
+{
+~Hard Disk Drive (HDD)
+=Solid State Drive (SSD)
+~DVD
+~Floppy Disk
+}
+
+// [tag:Choose]
+::Which of the following cloud storage services is provided by Apple ?::
+Which of the following cloud storage services is provided by Apple ?
+{
+~Google Drive
+~OneDrive
+=iCloud
+~Dropbox
+}
+
+// === Fill in the blanks ===
+
+// [tag:Fill up]
+::_____ helps used to organize files on a computer::
+{=Folder} helps used to organize files on a computer.
+
+// [tag:Fill up]
+:: _____ is a small, portable storage device that plugs into a USB port::
+{=USB Flash Drive =pendrive} is a small, portable storage device that plugs into a USB port.
+
+// [tag:Fill up]
+::DVD is an example of _____ storage::
+A DVD is an example of {=optical} storage.
+
+// [tag:Fill up]
+::1 Gigabyte (GB) is equal to _____ Megabytes (MB)::
+1 Gigabyte (GB) is equal to {=1000 =1024} Megabytes (MB).
+
+// [tag:Fill up]
+::1 KiB is equal to _____ bytes::
+1 KiB is equal to {=1024} bytes
+
+// [tag:Fill up]
+::The word Computer occupies _____ bytes in ASCII::
+The word Computer occupies {=8} bytes in ASCII.
+
+// [tag:Fill up]
+::An example of Hard Disk Drive (HDD) manufacturer is _____ ::
+An example of Hard Disk Drive (HDD) manufacturer is {=Seagate =Western Digital =Toshiba}.
+
+// [tag:Fill up]
+::Capacity of a standard DVD is _____ GB::
+Capacity of a standard DVD is {=4.7} GB.
+
+// [tag:Fill up]
+::The storage device that needs to be carefully handled due to its fragile nature::
+The storage device that needs to be carefully handled due to its fragile nature is {=Hard Disk Drive =HDD}.
+
+// [tag:Fill up]
+::Example of magnetic storage device that is obsolete today::
+An example of magnetic storage device that is obsolete today is {=Floppy Disk}.
+
+// === Match the Following (Storage size units) ===
+
+// [tag:Match]
+::Match the Storage size units::
+Match the following Storage size units
+{
+= 1 Bit -> Smallest unit of storage (0 or 1)
+= 1 Byte -> 8 Bits
+= 1 kilobyte (kB) -> One Thousand Bytes
+= 1 megabyte (MB) -> One Million Bytes (1,000,000)
+= 1 gigabyte (GB) -> One Billion Bytes (1,000,000,000)
+= 1 terabyte (TB) -> 1000 GB
+= 1 petabyte (PB) -> 1000 TB
+}
+
+// === Match the Following (Storage Types) ===
+
+// [tag:Match]
+::Match the Storage Types::
+Match the following Storage Types
+{
+= SDCard -> Tiny - used in phones & cameras
+= USB flash drive -> Portable and easy to use
+= Hard disk drive -> Cheap & available in large capacities
+= Solid state drive -> Faster than HDDs & reliable
+= DVD -> 4.7 GB, 8.5 GB
+= Cloud storage -> Rented, remote, backup, sharing.
+= Floppy Disk -> Obsolete, small file storage.
+}
+
+// === True or False ===
+
+// [tag:True or False]
+::A Hard Disk Drive (HDD) is faster than a Solid State Drive (SSD)::
+A Hard Disk Drive (HDD) is faster than a Solid State Drive (SSD) {FALSE}
+
+// [tag:True or False]
+::Cloud storage allows you to access your files from anywhere with Internet::
+Cloud storage allows you to access your files from anywhere with Internet {TRUE}
+
+// [tag:True or False]
+::A folder is used to organize files on a computer::
+A folder is used to organize files on a computer {TRUE}
+
+// [tag:True or False]
+::A floppy disk can store more data than a modern SD card::
+A floppy disk can store more data than a modern SD card {FALSE}
+
+// [tag:True or False]
+::1 Megabyte (MB) is equal to 1000 Gigabytes (GB)::
+1 Megabyte (MB) is equal to 1000 Gigabytes (GB) {FALSE}
+
+// [tag:True or False]
+::USB 3.0 flash drives are generally faster than USB 2.0 flash drives::
+USB 3.0 flash drives are generally faster than USB 2.0 flash drives {TRUE}
+
+// [tag:True or False]
+::Hard Disk Drives (HDDs) uses magnetic fields to store data::
+Hard Disk Drives (HDDs) uses magnetic fields to store data {TRUE}
+
+// [tag:True or False]
+::RAM is a temporary storage device that loses data when power is turned off::
+RAM is a temporary storage device that loses data when power is turned off {TRUE}
+
+// [tag:True or False]
+::A Blu-ray disc can store more data than a DVD::
+A Blu-ray disc can store more data than a DVD {TRUE}
+
+// [tag:True or False]
+::SDCards and SSDs use flash memory for storage::
+SDCards and SSDs use flash memory for storage {TRUE}
+
+// === Short Answer ===
+
+// // [tag:Short Answer]
+// ::What is computer storage?::
+// What is computer storage?
+// {}
+
+// // [tag:Short Answer]
+// ::List down some computer storage devices.::
+// List down some computer storage devices.
+// {}
+
+// // [tag:Short Answer]
+// ::List down the units used for computer storage.::
+// List down the units used for computer storage.
+// {}
+
+// // [tag:Short Answer]
+// ::What is cloud storage and list down some cloud storage services.::
+// What is cloud storage and list down some cloud storage services.
+// {}

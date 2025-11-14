@@ -1,0 +1,235 @@
+// V std, Computer Science, Chapter 4: LibreOffice Writer
+// Zion Nursery & Primary School, Kovaipudur
+// Author : Jabez Winston
+// Date : Nov 10, 2025
+
+$CATEGORY: $course$/Chapter-4
+
+// === Choose the correct answer ===
+
+// [tag:Choose]
+::Which of the following is not a word processing software ?::
+Which of the following is not a word processing software ?
+{
+~Wordpad
+~Google Docs
+~Apple Pages
+=LibreOffice Calc
+}
+
+// [tag:Choose]
+::What is the default file format for saving documents in LibreOffice Writer?::
+What is the default file format for saving documents in LibreOffice Writer?
+{
+~.docx
+=.odt
+~.pdf
+~.txt
+}
+
+// [tag:Choose]
+::The keyboard shortcut to switch language/keyboard layout on Windows OS is::
+The keyboard shortcut to switch language/keyboard layout on Windows OS is
+{
+~Windows + Ctrl + S
+=Windows + Spacebar
+~Ctrl + Spacebar
+~Alt + Spacebar
+}
+
+// [tag:Choose]
+::The keyboard shortcut to save a document is::
+The keyboard shortcut to save a document is
+{
+~Alt + S
+=Ctrl + S
+~Ctrl + Alt + S
+~Shift + S
+}
+
+// [tag:Choose]
+::The keyboard shortcut for auto-numbering a list is::
+The keyboard shortcut for auto-numbering a list is
+{
+~F2
+=F12
+~Alt + F12
+~Ctrl + F1
+}
+
+// [tag:Choose]
+::The keyboard shortcut for centering text is::
+The keyboard shortcut for centering text is
+{
+~Ctrl + I
+~Ctrl + C
+~Alt + C
+=Ctrl + E
+}
+
+// [tag:Choose]
+::In LibreOffice Writer, where would you typically change the document's orientation (e.g., Portrait to Landscape)?::
+In LibreOffice Writer, where would you typically change the document's orientation (e.g., Portrait to Landscape)?
+{
+~Tools -> Options
+~Format -> Character
+=Format -> Page Style
+~View -> Status Bar
+}
+
+// [tag:Choose]
+::Which file format is most suitable for sharing and printing ?::
+Which file format is most suitable for sharing and printing ?
+{
+~.docx
+~.odt
+=.pdf
+~.rtf
+}
+
+// [tag:Choose]
+::The keyboard shortcut for inserting Math formula in LibreOffice Writer is::
+The keyboard shortcut for inserting Math formula in LibreOffice Writer is
+{
+~Ctrl + F
+=Alt + Shift + E
+~Ctrl + Shift + F
+~Alt + Shift + M
+}
+
+// [tag:Choose]
+::To use document with Microsoft Word, save it in format::
+To use document with Microsoft Word, save it in format
+{
+~.odt
+~.fodt
+=.docx
+~.ods
+}
+
+// === Fill in the blanks ===
+
+// [tag:Fill up]
+::LibreOffice Writer is a software::
+LibreOffice Writer is a {=word processing} software.
+
+// [tag:Fill up]
+::Option aligns text between left and right margins::
+The {=Justify} option aligns text between left and right margins.
+
+// [tag:Fill up]
+::Shortcut for undoing an action::
+The keyboard shortcut for undoing an action is {=Ctrl+Z =Ctrl +Z =Ctrl + Z =Ctrl Z}.
+
+// [tag:Fill up]
+::Shortcut for copying text::
+The keyboard shortcut for copying text is {=Ctrl+C =Ctrl +C =Ctrl + C =Ctrl C}.
+
+// [tag:Fill up]
+::Shortcut for cutting text::
+The keyboard shortcut for cutting text is {=Ctrl+X =Ctrl +X =Ctrl + X =Ctrl X}.
+
+// [tag:Fill up]
+::Shortcut for pasting text::
+The keyboard shortcut for pasting text is {=Ctrl+V =Ctrl +V =Ctrl + V =Ctrl V}.
+
+// [tag:Fill up]
+::Ctrl key on macOS is replaced by::
+On macOS, Ctrl key in keyboard shortcuts is replaced by {=Command =Cmd} key.
+
+// [tag:Fill up]
+::Expansion of PDF::
+The expansion of PDF is {=Portable Document Format}.
+
+// [tag:Fill up]
+::Expansion of QR::
+The expansion of QR in QR code is {=Quick Response}.
+
+// [tag:Fill up]
+::Expansion of ODT::
+The expansion of ODT (file format) is {=OpenDocument Text =open document text}.
+
+// === True or False ===
+
+// [tag:True or False]
+::LibreOffice Writer requires an Internet connection to work::
+LibreOffice Writer requires an Internet connection to work {FALSE}
+
+// [tag:True or False]
+::You can export documents as PDF files in LibreOffice Writer::
+You can export documents as PDF files in LibreOffice Writer {TRUE}
+
+// [tag:True or False]
+::We can insert QR codes and Barcodes in LibreOffice Writer::
+We can insert QR codes and Barcodes in LibreOffice Writer {TRUE}
+
+// [tag:True or False]
+::We cannot change text color in LibreOffice Writer::
+We cannot change text color in LibreOffice Writer {FALSE}
+
+// [tag:True or False]
+::Microsoft Office is free to download and use::
+Microsoft Office is free to download and use {FALSE}
+
+// [tag:True or False]
+::LibreOffice is free to download and use::
+LibreOffice is free to download and use {TRUE}
+
+// [tag:True or False]
+::We cannot select text using keyboard::
+We cannot select text using keyboard {FALSE}
+
+// === Match the Following ===
+
+// [tag:Match]
+::Match the following Keyboard Shortcuts::
+Match the following
+{
+= Copy -> Ctrl+C
+= Paste -> Ctrl+V
+= Redo -> Ctrl+Y
+= Undo -> Ctrl+Z
+= Align Right -> Ctrl+R
+= Underline -> Ctrl+U
+= Print -> Ctrl+P
+}
+
+// [tag:Match]
+// ::Match the following Text Formatting::
+// Match the following
+// {
+// = Computer Science -> Bold
+// = Look here ! -> Italic
+// = Important -> Underline
+// = 2nd, 43 °C , 32  -> Superscript
+// = H2O , a1, b2 -> Subscript
+// = Laziness -> Strikethrough
+// = Ph.D -> Overline
+// }
+
+// === Answer the following (Short Answer) ===
+
+// // [tag:Short Answer]
+// ::List down some word processing software.::
+// List down some word processing software.
+// {}
+
+// // [tag:Short Answer]
+// ::List down any 7 keyboard shortcuts and their functions.::
+// List down any 7 keyboard shortcuts and their functions.
+// {}
+
+// // [tag:Short Answer]
+// ::List down a few standard text formatting options.::
+// List down a few standard text formatting options.
+// {}
+
+// // [tag:Short Answer]
+// ::List down text alignment options and describe them.::
+// List down text alignment options and describe them.
+// {}
+
+// // [tag:Short Answer]
+// ::Explain how to insert Math equations in LibreOffice Writer with 3 examples.::
+// Explain how to insert Math equations in LibreOffice Writer with 3 examples.
+// {}
