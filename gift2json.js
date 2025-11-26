@@ -158,7 +158,7 @@ function writeName(name){
 }
 
 function splitTrueFalseComment(answer, defaultFormat){
-  const bits = answer.split('#');
+  const bits = answer.split('#', 3);
   const ans = parseTextWithFormat(bits[0].trim(), defaultFormat);
   const wrong = bits.length > 1 ? parseTextWithFormat(bits[1].trim(), defaultFormat)
                                 : { text: '', format: defaultFormat };
@@ -168,16 +168,16 @@ function splitTrueFalseComment(answer, defaultFormat){
 }
 
 function commentParser(answer, defaultFormat){
-  const bits = answer.split('#');
+  const bits = answer.split('#', 2);
   const ans = parseTextWithFormat(bits[0].trim(), defaultFormat);
-  const feedback = bits.length > 1 ? parseTextWithFormat(bits.slice(1).join('#').trim(), defaultFormat)
+  const feedback = bits.length > 1 ? parseTextWithFormat(bits[1].trim(), defaultFormat)
                                    : { text: '', format: defaultFormat };
   return [ans, feedback];
 }
 
 function parseWeight(answerStr){
   // expects leading %n.n%
-  const m = answerStr.match(/^%\-?([0-9]{1,2})(?:\.([0-9]+))?%/);
+  const m = answerStr.match(/^%\-?([0-9]{1,2})(?:\.([0-9]*))?%/);
   if (!m) return { weight: null, rest: answerStr };
   const num = parseFloat(`${m[1]}${m[2] ? '.'+m[2] : ''}`);
   const weight = num/100;
@@ -186,11 +186,13 @@ function parseWeight(answerStr){
 
 function extractIdnumberAndTags(commentBlock){
   let idnumber = '';
-  const idMatch = commentBlock.match(/\[id:((?:\\\]|[^\]][^\r\n])+)\]/);
+  // Match PHP pattern: \[id:((?:\\]|[^][:cntrl:]])+)]
+  const idMatch = commentBlock.match(/\[id:((?:\\\]|[^\]\x00-\x1F\x7F])+)\]/);
   if (idMatch) idnumber = idMatch[1].replace(/\\\]/g, ']').trim();
 
   const tags = [];
-  const tagRe = /\[tag:((?:\\\]|[^\]]+)*)\]/g;
+  // Match PHP pattern: \[tag:((?:\\]|[^]<>`[:cntrl:]]|)+)]
+  const tagRe = /\[tag:((?:\\\]|[^\]<>`\x00-\x1F\x7F])+)\]/g;
   let tm;
   while ((tm = tagRe.exec(commentBlock))) {
     tags.push(tm[1].replace(/\\\]/g, ']').trim());
@@ -280,7 +282,7 @@ function parseQuestion(lines){
   } else if (/\}\s*$/.test(text)){
     questiontext = text.slice(0, answerStart) + text.slice(answerFinish+1);
   } else {
-    questiontext = text.slice(0, answerStart) + '_____';
+    questiontext = text.slice(0, answerStart) + '_____' + text.slice(answerFinish+1);
   }
 
   // general feedback
@@ -418,7 +420,7 @@ function parseQuestion(lines){
           if (!isFinite(ans) || !isFinite(tol)) throw new Error('Numerical answer and tolerance must be numbers');
         } else {
           ans = parseFloat(raw.trim()); tol = 0;
-          if (!isFinite(ans)) throw new Error('Numerical answer must be a number');
+          if (!(isFinite(ans) || raw.trim() === '*')) throw new Error('Numerical answer must be a number');
         }
         q.answers.push({ answer: ans, tolerance: tol, fraction: weight, feedback: fb.text, feedbackformat: fb.format });
       }

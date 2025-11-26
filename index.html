@@ -156,13 +156,16 @@ Date   : 17 September 2025
         if (!q.qtype) continue;
         const t = q.qtype.toLowerCase();
         if (t === 'category') continue; // skip
-        const obj = { raw: q, type: t, title: q.name || q.questiontext || '(no text)' };
+        const obj = { raw: q, type: t, title: q.questiontext || q.name || '(no text)' };
         // normalise answers
         if (t === 'multichoice') {
           obj.options = (q.answers || []).map((a, i) => ({ text: a.answer || a.text || "", correct: !!(a.fraction && Number(a.fraction) > 0), index: i }));
           obj.single = !!q.single;
         } else if (t === 'shortanswer') {
-          obj.answers = (q.answers || []).map(a => (a.answer || a.text || '').toString());
+          // Only include answers with positive fraction (correct answers)
+          obj.answers = (q.answers || [])
+            .filter(a => a.fraction && Number(a.fraction) > 0)
+            .map(a => (a.answer || a.text || '').toString());
         } else if (t === 'match') {
           obj.sub = (q.subquestions || []).map(s => ({ left: s.questiontext, right: s.answertext }));
         } else if (t === 'truefalse') {
@@ -465,10 +468,10 @@ Date   : 17 September 2025
         isCorrect = userAnswer !== null && userAnswer !== undefined && q.options[userAnswer]?.correct;
         correctAnswerText = correctOption ? correctOption.text : 'No correct answer specified';
       } else if (q.type === 'shortanswer' && q.answers && q.answers.length > 0) {
-        const correct = q.answers[0].toString().trim().toLowerCase();
         const got = (userAnswer || '').toString().trim().toLowerCase();
-        isCorrect = got === correct;
-        correctAnswerText = q.answers[0];
+        // Check against all possible correct answers
+        isCorrect = q.answers.some(ans => ans.toString().trim().toLowerCase() === got);
+        correctAnswerText = q.answers.join(' or ');
       } else if (q.type === 'truefalse') {
         isCorrect = userAnswer === q.correct;
         correctAnswerText = q.correct ? 'True' : 'False';
@@ -489,6 +492,9 @@ Date   : 17 September 2025
       // Show feedback
       feedbackContainer.style.display = 'block';
       feedbackContainer.className = 'feedback-container ' + (isCorrect ? 'feedback-correct' : 'feedback-incorrect');
+      
+      // Clear previous feedback to prevent duplicates
+      feedbackContainer.innerHTML = '';
 
       // Create feedback elements
       const feedbackDiv = document.createElement('div');
@@ -580,7 +586,7 @@ Date   : 17 September 2025
       
       // Create a container for the question text
       const questionContent = document.createElement('div');
-      qtext.innerHTML = escapeHtml(q.title) /* + (q.raw && q.raw.questiontext && q.raw.questiontext !== q.title ? ('<div class="small muted">' + escapeHtml(q.raw.questiontext) + '</div>') : '') */;
+      qtext.innerHTML = q.title /* + (q.raw && q.raw.questiontext && q.raw.questiontext !== q.title ? ('<div class="small muted">' + q.raw.questiontext + '</div>') : '') */;
       qtext.appendChild(questionContent);
       
       // Add speaker button for the question (except for match questions)
@@ -613,7 +619,7 @@ Date   : 17 September 2025
           lab.appendChild(inp);
           const span = document.createElement('span'); 
           span.style.marginLeft = '10px'; 
-          span.innerHTML = escapeHtml(o.text);
+          span.innerHTML = o.text;
           lab.appendChild(span);
           
           // Add speaker button for each option
@@ -644,7 +650,7 @@ Date   : 17 September 2025
 
           const label = document.createElement('div');
           label.className = 'match-label';
-          label.textContent = item.left;
+          label.innerHTML = item.left;
 
           const select = document.createElement('select');
           select.className = 'match-select';
@@ -746,12 +752,13 @@ Date   : 17 September 2025
             if (opt && opt.correct) { correctCount++; details.push({ i, ok: true }); } else details.push({ i, ok: false });
           }
         } else if (q.type === 'shortanswer') {
-          // do case-insensitive exact match against first correct answer
+          // do case-insensitive exact match against any correct answer
           if (q.answers && q.answers.length) {
             gradable++;
-            const correct = q.answers[0].toString().trim().toLowerCase();
             const got = (ans || '').toString().trim().toLowerCase();
-            if (got === correct) { correctCount++; details.push({ i, ok: true }); } else details.push({ i, ok: false });
+            // Check if the answer matches any of the correct answers
+            const isCorrect = q.answers.some(correctAns => correctAns.toString().trim().toLowerCase() === got);
+            if (isCorrect) { correctCount++; details.push({ i, ok: true }); } else details.push({ i, ok: false });
           }
         } else if (q.type === 'truefalse') {
           if (typeof q.correct === 'boolean') {
@@ -846,7 +853,7 @@ Date   : 17 September 2025
 
         const qtext = document.createElement('div');
         qtext.className = 'graded-question-text';
-        qtext.innerHTML = escapeHtml(q.title);
+        qtext.innerHTML = q.title;
         
         // Add speaker button for the question text (except for match questions)
         if (q.type !== 'match') {
@@ -916,7 +923,7 @@ Date   : 17 September 2025
             const correctOption = q.options.find(opt => opt.correct);
             correctAnswerContent.textContent = correctOption ? correctOption.text : 'No correct answer specified';
           } else if (q.type === 'shortanswer' && q.answers && q.answers.length > 0) {
-            correctAnswerContent.textContent = q.answers[0];
+            correctAnswerContent.textContent = q.answers.join(' or ');
           } else if (q.type === 'truefalse') {
             correctAnswerContent.textContent = q.correct ? 'True' : 'False';
           } else if (q.type === 'match' && q.sub) {
