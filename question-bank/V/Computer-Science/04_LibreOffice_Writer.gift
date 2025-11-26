@@ -195,17 +195,17 @@ Match the following
 }
 
 // [tag:Match]
-// ::Match the following Text Formatting::
-// Match the following
-// {
-// = Computer Science -> Bold
-// = Look here ! -> Italic
-// = Important -> Underline
-// = 2nd, 43 °C , 32  -> Superscript
-// = H2O , a1, b2 -> Subscript
-// = Laziness -> Strikethrough
-// = Ph.D -> Overline
-// }
+::Match the following Text Formatting::
+Match the following
+{
+= <b>Computer Science</b> -> Bold
+= <i>Look here !</i> -> Italic
+= <u>Important</u> -> Underline
+= 2<sup>nd</sup>, 43<sup>o</sup>C, 3<sup>2</sup>  -> Superscript
+= H<sub>2</sub>O , a<sub>1</sub>, b<sub>2</sub> -> Subscript
+= <s>Laziness</s> -> Strikethrough
+= <span style\="text-decoration\:overline;">Ph.D</span> -> Overline
+}
 
 // === Answer the following (Short Answer) ===
 

@@ -186,15 +186,15 @@ There is no short form for REPEAT command {TRUE}
 // === Match the Following (Angles) ===
 
 // [tag:Match]
-// ::Match the following Angles::
-// Match the following Angles
-// {
-// = Angle 1 -> 15°
-// = Angle 2 -> 90°
-// = Angle 3 -> 45°
-// = Angle 4 -> 120°
-// = Angle 5 -> 180°
-// }
+::Match the following Angles::
+Match the following Angles
+{
+= <svg width\="120" height\="120" viewBox\="0 0 80 80"><line x1\="40" y1\="40" x2\="70" y2\="40" stroke\="black" stroke-width\="2"/><line x1\="40" y1\="40" x2\="67" y2\="33" stroke\="black" stroke-width\="2"/></svg> -> 15°
+= <svg width\="120" height\="120" viewBox\="0 0 80 80"><line x1\="40" y1\="40" x2\="70" y2\="40" stroke\="black" stroke-width\="2"/><line x1\="40" y1\="40" x2\="40" y2\="10" stroke\="black" stroke-width\="2"/></svg> -> 90°
+= <svg width\="120" height\="120" viewBox\="0 0 80 80"><line x1\="40" y1\="40" x2\="70" y2\="40" stroke\="black" stroke-width\="2"/><line x1\="40" y1\="40" x2\="61" y2\="19" stroke\="black" stroke-width\="2"/></svg> -> 45°
+= <svg width\="120" height\="120" viewBox\="0 0 80 80"><line x1\="40" y1\="40" x2\="70" y2\="40" stroke\="black" stroke-width\="2"/><line x1\="40" y1\="40" x2\="25" y2\="14" stroke\="black" stroke-width\="2"/></svg> -> 120°
+= <svg width\="120" height\="120" viewBox\="0 0 80 80"><line x1\="40" y1\="40" x2\="70" y2\="40" stroke\="black" stroke-width\="2"/><line x1\="40" y1\="40" x2\="10" y2\="40" stroke\="black" stroke-width\="2"/></svg> -> 180°
+}
 
 // [tag:Match]
 ::Match the following Logo Code & Shapes::

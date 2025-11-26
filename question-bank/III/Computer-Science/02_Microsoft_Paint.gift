@@ -190,23 +190,23 @@ You can resize an image after you have drawn it. {TRUE}
 ::Mixing lights::
 Match the following
 {
-=Red + Green -> Yellow
-=Red + Blue -> Magenta
-=Green + Blue -> Cyan
-=Red + Green + Blue -> White
+=Red <svg width\="20" height\="20"><rect width\="20" height\="20" fill\="red"/></svg> + Green <svg width\="20" height\="20"><rect width\="20" height\="20" fill\="green"/></svg> -> Yellow
+=Red <svg width\="20" height\="20"><rect width\="20" height\="20" fill\="red"/></svg> + Blue <svg width\="20" height\="20"><rect width\="20" height\="20" fill\="blue"/></svg> -> Magenta
+=Green <svg width\="20" height\="20"><rect width\="20" height\="20" fill\="green"/></svg> + Blue <svg width\="20" height\="20"><rect width\="20" height\="20" fill\="blue"/></svg> -> Cyan
+=Red <svg width\="20" height\="20"><rect width\="20" height\="20" fill\="red"/></svg> + Green <svg width\="20" height\="20"><rect width\="20" height\="20" fill\="green"/></svg> + Blue <svg width\="20" height\="20"><rect width\="20" height\="20" fill\="blue"/></svg> -> White
 }
 
 // [tag:Match]
 ::Mixing inks::
 Match the following
 {
-= Cyan + Magenta -> Blue
-= Cyan + Yellow -> Green
-= Magenta + Yellow -> Red
-= Cyan + Magenta + Yellow -> Black
-= Red + Yellow -> Orange
-= Blue + Yellow -> Natural Green
-= Black + White -> Gray
+= Cyan <svg width\="20" height\="20"><rect width\="20" height\="20" fill\="cyan"/></svg> + Magenta <svg width\="20" height\="20"><rect width\="20" height\="20" fill\="magenta"/></svg> -> Blue
+= Cyan <svg width\="20" height\="20"><rect width\="20" height\="20" fill\="cyan"/></svg> + Yellow <svg width\="20" height\="20"><rect width\="20" height\="20" fill\="yellow"/></svg> -> Green
+= Magenta <svg width\="20" height\="20"><rect width\="20" height\="20" fill\="magenta"/></svg> + Yellow <svg width\="20" height\="20"><rect width\="20" height\="20" fill\="yellow"/></svg> -> Red
+= Cyan <svg width\="20" height\="20"><rect width\="20" height\="20" fill\="cyan"/></svg> + Magenta <svg width\="20" height\="20"><rect width\="20" height\="20" fill\="magenta"/></svg> + Yellow <svg width\="20" height\="20"><rect width\="20" height\="20" fill\="yellow"/></svg> -> Black
+= Red <svg width\="20" height\="20"><rect width\="20" height\="20" fill\="red"/></svg> + Yellow <svg width\="20" height\="20"><rect width\="20" height\="20" fill\="yellow"/></svg> -> Orange
+= Blue <svg width\="20" height\="20"><rect width\="20" height\="20" fill\="blue"/></svg> + Yellow <svg width\="20" height\="20"><rect width\="20" height\="20" fill\="yellow"/></svg> -> Natural Green
+= Black <svg width\="20" height\="20"><rect width\="20" height\="20" fill\="black"/></svg> + White <svg width\="20" height\="20"><rect width\="20" height\="20" fill\="white" stroke\="black" stroke-width\="1"/></svg> -> Gray
 }
 
 // [tag:Match]
