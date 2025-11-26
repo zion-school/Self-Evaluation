@@ -1,0 +1,198 @@
+// Class 3, Computer Science, Chapter 4 : WordPad
+// Zion Nursery & Primary School, Kovaipudur
+// Author : Jabez Winston
+// Date : November 25, 2025
+
+$CATEGORY: $course$/Chapter-4
+
+// === Choose the correct answer ===
+
+// [tag:Choose]
+::What is WordPad used for?::
+What is WordPad used for?
+{
+~Drawing pictures
+=Writing & editing text documents
+~Playing games
+~Browsing the Internet
+}
+
+// [tag:Choose]
+::To change text style in WordPad, what should be done first?::
+To change text style in WordPad, what should be done first?
+{
+~Press Alt key
+~Click on the File menu
+~Close the document
+=Select the text
+}
+
+// [tag:Choose]
+::Which button is used to make text bold in WordPad?::
+Which button is used to make text bold in WordPad?
+{
+~<u>U</u>
+~<i>I</i>
+=<b>B</b>
+~<s>S</s>
+}
+
+// [tag:Choose]
+::Which keyboard shortcut is used to copy text in WordPad?::
+Which keyboard shortcut is used to copy text in WordPad?
+{
+~Ctrl + V
+=Ctrl + C
+~Ctrl + X
+~Ctrl + Z
+}
+
+// [tag:Choose]
+::What is the keyboard shortcut to paste text?::
+What is the keyboard shortcut to paste text?
+{
+~Ctrl + C
+=Ctrl + V
+~Ctrl + X
+~Ctrl + P
+}
+
+// [tag:Choose]
+::To undo the last action in WordPad, press::
+To undo the last action in WordPad, press
+{
+~Ctrl + Y
+=Ctrl + Z
+~Ctrl + U
+~Ctrl + D
+}
+
+// [tag:Choose]
+::Which menu is used to save a document in WordPad?::
+Which menu is used to save a document in WordPad?
+{
+~Edit
+~View
+=File
+~Format
+}
+
+// [tag:Choose]
+::The default format to save a WordPad document is::
+The default format to save a WordPad document is
+{
+~.txt (Plain Text)
+~.pages (Apple Pages)
+=.rtf (Rich Text Format)
+~.pdf (Portable Document Format)
+}
+
+// [tag:Choose]
+::Which button centers the text in WordPad?::
+Which button centers the text in WordPad?
+{
+~Align Left button
+~Align Right button
+=Center Align button
+~Justify button
+}
+
+// [tag:Choose]
+::What does the Cut command do?::
+What does the Cut command do?
+{
+~Copies text without removing it
+=Removes text and stores it temporarily
+~Deletes text permanently
+~Changes text color
+}
+
+// === Fill in the blanks ===
+
+// [tag:Fill up]
+::WordPad is a default application in Windows::
+{=WordPad} is a default application in Windows used for creating and editing text documents.
+
+// [tag:Fill up]
+::The button is used to make text appear in slanted style::
+The {=Italic} button is used to make text appear in <i>slanted</i> style.
+
+// [tag:Fill up]
+::Key creates new lines in a document::
+{=Enter} key creates new lines in a document.
+
+// [tag:Fill up]
+::Key erases the character to the left of the cursor::
+{=Backspace} key erases the character to the left of the cursor.
+
+// [tag:Fill up]
+::To make text appear smaller or larger, we change the::
+To make text appear <small>smaller</small> or <big>larger</big>, we change the {=font size}.
+
+// [tag:Fill up]
+::Keys helps move anywhere in the document::
+{=Arrow} keys helps move anywhere in the document.
+
+// [tag:Fill up]
+::Press on keyboard to select all text in a document::
+Press {=Ctrl + A} on keyboard to <mark>select all text</mark> in a document.
+
+// === True or False ===
+
+// [tag:True or False]
+::WordPad allows you to change the font size::
+WordPad allows you to change the font size. {TRUE}
+
+// [tag:True or False]
+::You can insert pictures into a WordPad document::
+You can insert pictures into a WordPad document. {TRUE}
+
+// [tag:True or False]
+::The Bold button makes text thicker and darker::
+The Bold button makes text <b>thicker</b> and darker. {TRUE}
+
+// [tag:True or False]
+::Ctrl + X is the keyboard shortcut for Copy::
+Ctrl + X is the keyboard shortcut for Copy. {FALSE}
+
+// [tag:True or False]
+::WordPad can be used to create drawings and paintings::
+WordPad can be used to create drawings and paintings. {FALSE}
+
+// [tag:True or False]
+::The Undo button cancels the last action performed::
+The Undo button cancels the last action performed. {TRUE}
+
+// [tag:True or False]
+::The superscript option is used to write numbers like 2nd::
+The superscript option is used to write numbers like 2<sup>nd</sup>. {TRUE}
+
+// [tag:True or False]
+::You can print documents directly from WordPad::
+You can print documents directly from WordPad. {TRUE}
+
+// === Match the Following ===
+
+// [tag:Match]
+::Match - Keyboard Shortcuts::
+Match the following keyboard shortcuts
+{
+= Copy -> Ctrl+C
+= Paste -> Ctrl+V
+= Cut -> Ctrl+X
+= Undo -> Ctrl+Z
+= Align Center -> Ctrl+E
+= Underline -> Ctrl+U
+= Select All -> Ctrl+A
+}
+
+// [tag:Match]
+::Match - Text Formatting::
+Match the following text formatting styles
+{
+= <b>Computer Science</b> -> Bold
+= <i>Look here !</i> -> Italic
+= <u>Important</u> -> Underline
+= 2<sup>nd</sup>, 90<sup>o</sup> -> Superscript
+= <s>Laziness</s> -> Strikethrough
+}
